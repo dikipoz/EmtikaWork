@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Program {
-	public static final double VERSION = 9.29;
+	public static final double VERSION = 9.28;
 
 	public static void main(String[] args) throws IOException {
 		
