@@ -3,13 +3,16 @@ package ru.zaoemtika.EmtikaWork;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Map;
 import java.net.InetAddress;
+import java.nio.charset.Charset;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -46,10 +49,12 @@ public class Done {
 		if (errorCounts == 0 ) {
 			if ((whatWork.contains("Утренняя") || whatWork.contains("Обновление")) && !filial.contains("Подольск")) {
 				try (PrintWriter writer = new PrintWriter(
-						new File(System.getProperty("user.home") + File.separator + "AppData" + File.separator
-								+ "Roaming" + File.separator + "Emtika Work" + File.separator + "ewupd.txt"))) {
+						new OutputStreamWriter(
+								new FileOutputStream(
+										System.getProperty("user.home") + File.separator + "AppData" + File.separator
+								+ "Roaming" + File.separator + "Emtika Work" + File.separator + "ewupd.txt"), Charset.forName("UTF-8")))) {
 					for (Map.Entry<String, String> entry : ReadMapFromEWUPD.staffLocal.entrySet()) {
-						writer.write(entry.getKey() + " " + entry.getValue() + "\n");
+						writer.println(entry.getKey() + " " + entry.getValue());
 					}
 					AllWork.getTextArea().append(" Сохранение изменений в ewupd.txt...  готово\n");
 				} catch (Exception e) {

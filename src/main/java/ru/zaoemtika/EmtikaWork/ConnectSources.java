@@ -21,7 +21,7 @@ public abstract class ConnectSources extends JFrame {
 /*
 		dir = Paths.get("c:" + File.separator + "paradise" + File.separator + "paradise.exe");
 		if (!Files.exists(dir, LinkOption.NOFOLLOW_LINKS)) {
-			JOptionPane.showMessageDialog(null, "Не найден Paradise. Ну и хрен с ним.", "Ошибка", JOptionPane.OK_OPTION, null);
+			JOptionPane.showMessageDialog(null, "РќРµ РЅР°Р№РґРµРЅ Paradise. РќСѓ Рё С…СЂРµРЅ СЃ РЅРёРј.", "РћС€РёР±РєР°", JOptionPane.OK_OPTION, null);
 			//System.exit(0);
 		}*/
 
@@ -30,7 +30,7 @@ public abstract class ConnectSources extends JFrame {
 		
 		dir = Paths.get("i:");
 		if (!Files.isDirectory(dir, LinkOption.NOFOLLOW_LINKS)) {
-			JOptionPane.showMessageDialog(null, "<html><font color=#ffffdd>Не найден диск I. Обратитесь к администратору</font>", "Ошибка",
+			JOptionPane.showMessageDialog(null, "<html><font color=#ffffdd>РќРµ РЅР°Р№РґРµРЅ РґРёСЃРє I. РћР±СЂР°С‚РёС‚РµСЃСЊ Рє Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂСѓ</font>", "РћС€РёР±РєР°",
 					JOptionPane.ERROR_MESSAGE, new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Cancel-48.png")));
 			System.exit(0);
 		}
@@ -43,7 +43,7 @@ public abstract class ConnectSources extends JFrame {
 			// C:\\tmp\\N_EMT");
 			try {
 				if (p.waitFor() == 0) {
-					System.out.println("Подключен диск Z:");
+					System.out.println("РџРѕРґРєР»СЋС‡РµРЅ РґРёСЃРє Z:");
 				}
 			} catch (InterruptedException e1) {
 				AllWork.setErrList(e1.getLocalizedMessage());
@@ -57,7 +57,7 @@ public abstract class ConnectSources extends JFrame {
 		}*/
 
 		/*if(Files.isDirectory(Paths.get("c:" + File.separator + "_111" + File.separator))){
-			System.out.println("найдено");
+			System.out.println("РЅР°Р№РґРµРЅРѕ");
 			Files.delete(Paths.get("c:" + File.separator + "_111" + File.separator));
 			}*/
 		dir = Paths.get("c:" + File.separator + "base" + File.separator);
