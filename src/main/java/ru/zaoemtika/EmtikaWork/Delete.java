@@ -20,12 +20,12 @@ public class Delete {
 	}
 	
 	private static void delete(String pathSource, String nameFile) {
-		AllWork.getTextArea().append(" Удаление  " + nameFile.toLowerCase() + " ...   ");
+		AllWork.getTextArea().append(" РЈРґР°Р»РµРЅРёРµ  " + nameFile.toLowerCase() + " ...   ");
 		try {
 			Files.delete(Paths.get(pathSource.toString().toUpperCase() + nameFile));
-			AllWork.getTextArea().append("готово\n");
+			AllWork.getTextArea().append("РіРѕС‚РѕРІРѕ\n");
 		} catch (IOException e) {
-			AllWork.getTextArea().append("ошибка\n");
+			AllWork.getTextArea().append("РѕС€РёР±РєР°\n");
 			e.printStackTrace();
 		}
 

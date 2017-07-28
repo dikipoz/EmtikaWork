@@ -20,8 +20,8 @@ public class CreateZipArchive{
 			zos.setLevel(Deflater.DEFAULT_COMPRESSION);
 		}   
 		catch(Exception e){
-			AllWork.getTextArea().append("ошибка \n");
-			AllWork.setErrList(e.getMessage() + "   ошибка");
+			AllWork.getTextArea().append("РѕС€РёР±РєР° \n");
+			AllWork.setErrList(e.getMessage() + "   РѕС€РёР±РєР°");
 			AllWork.setErrorsCount(AllWork.getErrorsCount() + 1);
 		}
 		
@@ -35,17 +35,17 @@ public class CreateZipArchive{
 			for(int i = 0; i < sDirList.length; i++){
 			    if(new File(f + File.separator + sDirList[i]).isFile()){
 			    	RepaintProgressBar.repaintProgressBar(1);
-			    	AllWork.getTextArea().append("Упаковка  " + sDirList[i] + "  в  " + destFile + ".zip...  ");
+			    	AllWork.getTextArea().append("РЈРїР°РєРѕРІРєР°  " + sDirList[i] + "  РІ  " + destFile + ".zip...  ");
 			    	addFileToZip(zos, f + File.separator, sDirList[i]);
-			    	//System.out.println(f + "    и    " + f + File.separator);
-			    	AllWork.getTextArea().append("готово \n");
+			    	//System.out.println(f + "    Рё    " + f + File.separator);
+			    	AllWork.getTextArea().append("РіРѕС‚РѕРІРѕ \n");
 			    }
 			  }  
 			  zos.close();
 			  
 		}catch(Exception e){
-			AllWork.getTextArea().append("ошибка \n");
-			AllWork.setErrList(e.getMessage() + "   ошибка\n");
+			AllWork.getTextArea().append("РѕС€РёР±РєР° \n");
+			AllWork.setErrList(e.getMessage() + "   РѕС€РёР±РєР°\n");
 			AllWork.setErrorsCount(AllWork.getErrorsCount() + 1);
 		}
 	}

@@ -16,7 +16,7 @@ public class ExtractZipArchive {
 	public static void extractZipArchive(String dirPathSource, String dirPathDestination, String filename){
 		
 		try{
-			AllWork.getTextArea().append(" Распаковка  " + filename.toString().toLowerCase() + " ...    ");
+			AllWork.getTextArea().append(" Р Р°СЃРїР°РєРѕРІРєР°  " + filename.toString().toLowerCase() + " ...    ");
 			Charset CP866 = Charset.forName("CP866");
 			ZipFile zip = new ZipFile(dirPathSource + filename, CP866);
 		    Enumeration<? extends ZipEntry> entries = zip.entries();
@@ -42,10 +42,10 @@ public class ExtractZipArchive {
 		      out.close();
 		      }
 		    zip.close();
-		    AllWork.getTextArea().append("готово \n");
+		    AllWork.getTextArea().append("РіРѕС‚РѕРІРѕ \n");
 		} catch (IOException ex){
-			AllWork.getTextArea().append("ошибка \n");
-			AllWork.setErrList(filename.toString() + " распаковка ");
+			AllWork.getTextArea().append("РѕС€РёР±РєР° \n");
+			AllWork.setErrList(filename.toString() + " СЂР°СЃРїР°РєРѕРІРєР° ");
 			AllWork.setErrorsCount(AllWork.getErrorsCount() + 1);
 			ex.printStackTrace();
 		}

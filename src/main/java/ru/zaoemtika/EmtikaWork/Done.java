@@ -42,26 +42,26 @@ public class Done {
 		date.append(c.get(Calendar.MINUTE) > 9 ? c.get(Calendar.MINUTE) : "0" + c.get(Calendar.MINUTE));
 		date.append(":");
 		date.append(c.get(Calendar.SECOND) > 9 ? c.get(Calendar.SECOND) : "0" + c.get(Calendar.SECOND));
-		AllWork.getTextArea().append("\nЗавершено. Всего ошибок: " + errorCounts + "\n");
+		AllWork.getTextArea().append("\nР—Р°РІРµСЂС€РµРЅРѕ. Р’СЃРµРіРѕ РѕС€РёР±РѕРє: " + errorCounts + "\n");
 		if (errorCounts == 0 ) {
-			if ((whatWork.contains("Утренняя") || whatWork.contains("Обновление")) && !filial.contains("Подольск")) {
+			if ((whatWork.contains("РЈС‚СЂРµРЅРЅСЏСЏ") || whatWork.contains("РћР±РЅРѕРІР»РµРЅРёРµ")) && !filial.contains("РџРѕРґРѕР»СЊСЃРє")) {
 				try (PrintWriter writer = new PrintWriter(
 						new File(System.getProperty("user.home") + File.separator + "AppData" + File.separator
 								+ "Roaming" + File.separator + "Emtika Work" + File.separator + "ewupd.txt"))) {
 					for (Map.Entry<String, String> entry : ReadMapFromEWUPD.staffLocal.entrySet()) {
 						writer.write(entry.getKey() + " " + entry.getValue() + "\n");
 					}
-					AllWork.getTextArea().append(" Сохранение изменений в ewupd.txt...  готово\n");
+					AllWork.getTextArea().append(" РЎРѕС…СЂР°РЅРµРЅРёРµ РёР·РјРµРЅРµРЅРёР№ РІ ewupd.txt...  РіРѕС‚РѕРІРѕ\n");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-			JOptionPane.showMessageDialog(null, "Завершено без ошибок", "Статус завершения",
+			JOptionPane.showMessageDialog(null, "Р—Р°РІРµСЂС€РµРЅРѕ Р±РµР· РѕС€РёР±РѕРє", "РЎС‚Р°С‚СѓСЃ Р·Р°РІРµСЂС€РµРЅРёСЏ",
 					JOptionPane.OK_CANCEL_OPTION,
 					new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/new_ok.png")));
 		} else {
-			JOptionPane.showMessageDialog(null, "<HTML>Завершено с ошибками. <br>Повторите процедуру",
-					"Статус завершения", JOptionPane.ERROR_MESSAGE,
+			JOptionPane.showMessageDialog(null, "<HTML>Р—Р°РІРµСЂС€РµРЅРѕ СЃ РѕС€РёР±РєР°РјРё. <br>РџРѕРІС‚РѕСЂРёС‚Рµ РїСЂРѕС†РµРґСѓСЂСѓ",
+					"РЎС‚Р°С‚СѓСЃ Р·Р°РІРµСЂС€РµРЅРёСЏ", JOptionPane.ERROR_MESSAGE,
 					new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Error-48.png")));
 		}
 		try (FileWriter fw = new FileWriter(file, true)) {
@@ -71,10 +71,10 @@ public class Done {
 				bw.write(date + ", " + whatWork + " [" + filial + " :: "
 						+ InetAddress.getLocalHost().getHostName().toLowerCase() + " :: "
 						+ System.getProperties().getProperty("user.name") + " :: "
-						+ new SwingMainFrame().getMT().toString().substring(11, 25) + "] ОК");
+						+ new SwingMainFrame().getMT().toString().substring(11, 25) + "] РћРљ");
 			} else {
 				for (String st : AllWork.getErrList()) {
-					if (!st.contains("Процесс не может"))
+					if (!st.contains("РџСЂРѕС†РµСЃСЃ РЅРµ РјРѕР¶РµС‚"))
 						bw.write(date + ", " + whatWork + " [" + filial + " :: "
 								+ InetAddress.getLocalHost().getHostName().toLowerCase() + " :: "
 								+ System.getProperties().getProperty("user.name") + "::"
@@ -91,7 +91,7 @@ public class Done {
 	}
 
 	private void paradise() {
-		String pr_name = "Paradise".toUpperCase(); // <-- искомый процесс
+		String pr_name = "Paradise".toUpperCase(); // <-- РёСЃРєРѕРјС‹Р№ РїСЂРѕС†РµСЃСЃ
 		String process_line;
 		int flag = 0;
 		try {
@@ -100,8 +100,8 @@ public class Done {
 			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			while ((process_line = input.readLine()) != null) {
 				if (process_line.indexOf(pr_name + ".exe") >= 0 || process_line.indexOf(pr_name + ".EXE") >= 0) { // <--
-																													// поиск
-																													// процесса
+																													// РїРѕРёСЃРє
+																													// РїСЂРѕС†РµСЃСЃР°
 					// System
 					// System.out.println(process_line.substring(process_line.indexOf(pr_name)));
 					flag = 1;
@@ -111,7 +111,7 @@ public class Done {
 				try {
 					p = Runtime.getRuntime().exec("C:" + File.separator + "Paradise" + File.separator + "paradise.exe");
 				} catch (IOException e1) {
-					// JOptionPane.showMessageDialog(null, "Парадиз не найден");
+					// JOptionPane.showMessageDialog(null, "РџР°СЂР°РґРёР· РЅРµ РЅР°Р№РґРµРЅ");
 				}
 			}
 			input.close();
