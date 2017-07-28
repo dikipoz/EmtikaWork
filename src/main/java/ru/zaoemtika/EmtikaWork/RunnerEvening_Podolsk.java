@@ -85,7 +85,7 @@ public class RunnerEvening_Podolsk implements Runnable {
 		}
 
 		if (doSklad) {
-			CreateZipArchive.createZipArchive(new File(AllWork.I_BASE_PRICE), new String[] { "s1к20000.db" },
+			CreateZipArchive.createZipArchive(new File(AllWork.I_BASE_PRICE), new String[] { "s1Рє20000.db" },
 					AllWork.C_CASE, "SK_BASA".toUpperCase());
 			SimplyCopy.simplyCopy(AllWork.C_CASE + "sk_basa.zip", AllWork.Z_SKLADS + "sk_basa.zip".toUpperCase());
 		}
@@ -102,17 +102,17 @@ public class RunnerEvening_Podolsk implements Runnable {
 			if (Files.exists(path, LinkOption.NOFOLLOW_LINKS) && Files.isReadable(path)) {
 				SimplyCopy.simplyCopy(path.toString(), AllWork.TEMP_DIR + "pod_"
 						+ new StringBuilder(CurrentDate.currentDate(true)).delete(0, 2) + ".zip");
-				// Разархивируем из z:\counts файл свертки на TEMP_DIR
+				// Р Р°Р·Р°СЂС…РёРІРёСЂСѓРµРј РёР· z:\counts С„Р°Р№Р» СЃРІРµСЂС‚РєРё РЅР° TEMP_DIR
 				ExtractZipArchive.extractZipArchive(AllWork.TEMP_DIR, AllWork.TEMP_DIR,
 						"pod_" + new StringBuilder(CurrentDate.currentDate(true)).delete(0, 2) + ".zip");
-				// Копируем недостающее из i:\base\doc в TEMP_DIR
+				// РљРѕРїРёСЂСѓРµРј РЅРµРґРѕСЃС‚Р°СЋС‰РµРµ РёР· i:\base\doc РІ TEMP_DIR
 				for (String sdirlist : sDirList) {
 					SimplyCopy.simplyCopy(AllWork.I_BASE_DOC + sdirlist, AllWork.TEMP_DIR + sdirlist);
 				}
-				// Удаляем из TEMP_DIR архив свертки
+				// РЈРґР°Р»СЏРµРј РёР· TEMP_DIR Р°СЂС…РёРІ СЃРІРµСЂС‚РєРё
 				new Delete(AllWork.TEMP_DIR,
 						"pod_" + new StringBuilder(CurrentDate.currentDate(true)).delete(0, 2) + ".zip");
-				// Создаем архив свертки из TEMP_DIR на ФТП
+				// РЎРѕР·РґР°РµРј Р°СЂС…РёРІ СЃРІРµСЂС‚РєРё РёР· TEMP_DIR РЅР° Р¤РўРџ
 				sDirList = CreateFileNameArray.createFileNameArray(new File(AllWork.TEMP_DIR));
 				CreateZipArchive.createZipArchive(new File(AllWork.TEMP_DIR), sDirList, AllWork.I_CASE_COUNTS,
 						"pod_" + new StringBuilder(CurrentDate.currentDate(true)).delete(0, 2));
@@ -130,11 +130,11 @@ public class RunnerEvening_Podolsk implements Runnable {
 		} else {
 			AllWork.getProgressBar().setValue(24);
 			JOptionPane.showMessageDialog(null,
-					"каталог I:" + File.separator + "BASE" + File.separator + "DOC пустой.");
+					"РєР°С‚Р°Р»РѕРі I:" + File.separator + "BASE" + File.separator + "DOC РїСѓСЃС‚РѕР№.");
 		}
 
 		AllWork.getProgressBar().setValue(AllWork.getProgressBar().getMaximum());
-		new Done(false, AllWork.getErrorsCount(), AllWork.getFilial()[0], "Вечерняя   ");
+		new Done(false, AllWork.getErrorsCount(), AllWork.getFilial()[0], "Р’РµС‡РµСЂРЅСЏСЏ   ");
 		instance = null;
 
 	}

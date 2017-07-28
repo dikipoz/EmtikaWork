@@ -47,7 +47,7 @@ public class RunnerMorning implements Runnable {
 		Path path;
 		
 		Map<String, Boolean> staff = ReadMapFromEWUPD.readFromEWUPD(zipFileNames);
-		// Распаковка NACEN и SKK_005 в папку I_CASE_005
+		// Р Р°СЃРїР°РєРѕРІРєР° NACEN Рё SKK_005 РІ РїР°РїРєСѓ I_CASE_005
 		
 		AllWork.getTextArea().setText(null);
 		{
@@ -61,7 +61,7 @@ public class RunnerMorning implements Runnable {
 					}
 				} else {
 					if (s.getKey().toLowerCase().contains("nacen") && s.getValue()) {
-						AllWork.getTextArea().append(" " + s.getKey().toLowerCase() + "  не  изменялся...  пропущен\n");
+						AllWork.getTextArea().append(" " + s.getKey().toLowerCase() + "  РЅРµ  РёР·РјРµРЅСЏР»СЃСЏ...  РїСЂРѕРїСѓС‰РµРЅ\n");
 						RepaintProgressBar.repaintProgressBar(50);
 					}
 				}
@@ -76,7 +76,7 @@ public class RunnerMorning implements Runnable {
 					}
 				}else {
 					if (s.getKey().toLowerCase().contains("skk_005") && s.getValue()) {
-						AllWork.getTextArea().append(" " + s.getKey().toLowerCase() + "  не  изменялся...  пропущен\n");
+						AllWork.getTextArea().append(" " + s.getKey().toLowerCase() + "  РЅРµ  РёР·РјРµРЅСЏР»СЃСЏ...  РїСЂРѕРїСѓС‰РµРЅ\n");
 						RepaintProgressBar.repaintProgressBar(50);
 					}
 				}
@@ -85,7 +85,7 @@ public class RunnerMorning implements Runnable {
 			SimplyCopy.simplyCopy(AllWork.TEMP_DIR, AllWork.I_CASE_005);
 		}
 
-		// Копирование из z_defs с распаковкой и копированием в i:\base\price
+		// РљРѕРїРёСЂРѕРІР°РЅРёРµ РёР· z_defs СЃ СЂР°СЃРїР°РєРѕРІРєРѕР№ Рё РєРѕРїРёСЂРѕРІР°РЅРёРµРј РІ i:\base\price
 		{
 			String[] strSuff = { "zip", "db" };
 			for (String str : strSuff) {
@@ -108,11 +108,11 @@ public class RunnerMorning implements Runnable {
 							break;
 						}
 					} else
-						System.out.println("игнорирование " + zipfilename);
+						System.out.println("РёРіРЅРѕСЂРёСЂРѕРІР°РЅРёРµ " + zipfilename);
 				}
 			}
 		}
-		// Копирование из z:\sklads с последующей распаковкой в i:\base\price
+		// РљРѕРїРёСЂРѕРІР°РЅРёРµ РёР· z:\sklads СЃ РїРѕСЃР»РµРґСѓСЋС‰РµР№ СЂР°СЃРїР°РєРѕРІРєРѕР№ РІ i:\base\price
 		AllWork.getListAllSuffix().clear();
 		GetAllSuffixFile.getAllSuffixFile(AllWork.Z_SKLADS, "zip");
 		for (String zipfilename : AllWork.getListAllSuffix()) {
@@ -124,9 +124,9 @@ public class RunnerMorning implements Runnable {
 				new Delete(AllWork.TEMP_DIR, zipfilename);
 			}
 		}
-		// ---------------- Копирование из Z:\TO_ALL с последующей распаковкой в i:\base\price
+		// ---------------- РљРѕРїРёСЂРѕРІР°РЅРёРµ РёР· Z:\TO_ALL СЃ РїРѕСЃР»РµРґСѓСЋС‰РµР№ СЂР°СЃРїР°РєРѕРІРєРѕР№ РІ i:\base\price
 		{
-			AllWork.getTextArea().append("*** Разархивируем все из z:\\to_all в i:\\base\\price ***\n");
+			AllWork.getTextArea().append("*** Р Р°Р·Р°СЂС…РёРІРёСЂСѓРµРј РІСЃРµ РёР· z:\\to_all РІ i:\\base\\price ***\n");
 			for(Map.Entry<String, Boolean> s : staff.entrySet()){
 				for (String zipfilename : zipFileNames) {
 					path = Paths.get(AllWork.Z_TO_ALL + zipfilename);
@@ -143,7 +143,7 @@ public class RunnerMorning implements Runnable {
 						new Delete(AllWork.TEMP_DIR, zipfilename);
 					}else {
 						if (s.getKey().toLowerCase().contains(zipfilename) && s.getValue()) {
-							AllWork.getTextArea().append(" " + s.getKey().toLowerCase() + "  не  изменялся...  пропущен\n");
+							AllWork.getTextArea().append(" " + s.getKey().toLowerCase() + "  РЅРµ  РёР·РјРµРЅСЏР»СЃСЏ...  РїСЂРѕРїСѓС‰РµРЅ\n");
 							RepaintProgressBar.repaintProgressBar(50);
 						}
 					}
@@ -153,9 +153,9 @@ public class RunnerMorning implements Runnable {
 		
 		SimplyCopy.simplyCopy(AllWork.TEMP_DIR, AllWork.I_BASE_PRICE);
 		new Delete(AllWork.TEMP_DIR);
-		// Новая хрень с ES.ZIP
+		// РќРѕРІР°СЏ С…СЂРµРЅСЊ СЃ ES.ZIP
 		{
-			AllWork.getTextArea().append("*** Разархивируем es.zip в i:\\case\\ES ***\n");
+			AllWork.getTextArea().append("*** Р Р°Р·Р°СЂС…РёРІРёСЂСѓРµРј es.zip РІ i:\\case\\ES ***\n");
 			for (Map.Entry<String, Boolean> s : staff.entrySet()) {
 				if (s.getKey().toLowerCase().contains("es.zip") && !s.getValue()) {
 					path = Paths.get(AllWork.Z_TO_ALL + "es.zip");
@@ -171,7 +171,7 @@ public class RunnerMorning implements Runnable {
 					}
 				}else {
 					if (s.getKey().toLowerCase().contains("es.zip") && s.getValue()) {
-						AllWork.getTextArea().append(" " + s.getKey().toLowerCase() + "  не  изменялся...  пропущен\n");
+						AllWork.getTextArea().append(" " + s.getKey().toLowerCase() + "  РЅРµ  РёР·РјРµРЅСЏР»СЃСЏ...  РїСЂРѕРїСѓС‰РµРЅ\n");
 						RepaintProgressBar.repaintProgressBar(50);
 					}
 				}
@@ -189,7 +189,7 @@ public class RunnerMorning implements Runnable {
 		
 		SimplyCopy.simplyCopy(AllWork.TEMP_DIR, AllWork.I_BASE_PRICE);
 		
-		//---------------- Копируем BSM_35.ssl
+		//---------------- РљРѕРїРёСЂСѓРµРј BSM_35.ssl
 		SimplyCopy.simplyCopy(File.separator + File.separator + "zaoemtika.ru" + File.separator + "dfs" + File.separator
 				+ "ftp" + File.separator + "__Soft" + File.separator + "EWLog" + File.separator + "35.bat", "i:\\case\\003\\35.bat");
 		
@@ -205,19 +205,19 @@ public class RunnerMorning implements Runnable {
 		/*if (!Files.exists(Paths.get("i:\\case\\003\\35.bat".toUpperCase()), LinkOption.NOFOLLOW_LINKS)){
 			SimplyCopy.simplyCopy(File.separator + File.separator + "zaoemtika.ru" + File.separator + "dfs" + File.separator
 					+ "ftp" + File.separator + "__Soft" + File.separator + "EWLog" + File.separator + "35.bat", "i:\\case\\003\\35.bat");
-				System.out.println("копируем 35.bat");
+				System.out.println("РєРѕРїРёСЂСѓРµРј 35.bat");
 			}else{
-				System.out.println("не копируем 35.bat");
+				System.out.println("РЅРµ РєРѕРїРёСЂСѓРµРј 35.bat");
 			}
 		
 		if (!Files.exists(Paths.get("i:\\case\\003\\bsm_35.ssl".toUpperCase()), LinkOption.NOFOLLOW_LINKS)){
 			SimplyCopy.simplyCopy(File.separator + File.separator + "zaoemtika.ru" + File.separator + "dfs" + File.separator
 				+ "ftp" + File.separator + "__Soft" + File.separator + "EWLog" + File.separator + "BSM_35.ssl", "i:\\case\\003\\BSM_35.ssl");
-			System.out.println("копируем bsm_35.ssl");
+			System.out.println("РєРѕРїРёСЂСѓРµРј bsm_35.ssl");
 		}else{
-			System.out.println("не копируем bsm_35");
+			System.out.println("РЅРµ РєРѕРїРёСЂСѓРµРј bsm_35");
 		}*/
-		// ---------------- Копируем POST в I:\CASE\003
+		// ---------------- РљРѕРїРёСЂСѓРµРј POST РІ I:\CASE\003
 		{
 			path = Paths.get(AllWork.Z_DEFS + "post.db");
 			if (Files.exists(path, LinkOption.NOFOLLOW_LINKS)) {
@@ -231,7 +231,7 @@ public class RunnerMorning implements Runnable {
 
 		new Delete(AllWork.TEMP_DIR);
 		
-		// --------------- Копируем BSxxxxx.zip в c:\_111 с последующей распаковкой в i:\case\bs
+		// --------------- РљРѕРїРёСЂСѓРµРј BSxxxxx.zip РІ c:\_111 СЃ РїРѕСЃР»РµРґСѓСЋС‰РµР№ СЂР°СЃРїР°РєРѕРІРєРѕР№ РІ i:\case\bs
 		{
 			for (Map.Entry<String, Boolean> s : staff.entrySet()) {
 				if (Files.exists(Paths.get(AllWork.Z_TO_ALL + "bs" + CurrentDate.currentDate(true) + ".zip"), LinkOption.NOFOLLOW_LINKS)
@@ -264,7 +264,7 @@ public class RunnerMorning implements Runnable {
 		PostReindex.postReindex();
 		
 		AllWork.getProgressBar().setValue(AllWork.getProgressBar().getMaximum());
-		new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0], "Утренняя    ");
+		new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0], "РЈС‚СЂРµРЅРЅСЏСЏ    ");
 
 		instance = null;
 	}

@@ -49,8 +49,8 @@ public class RunnerUpdate implements Runnable {
 		Map<String, Boolean> staff = ReadMapFromEWUPD.readFromEWUPD(zipFileNames);
 
 		if (!doUpdateInvoice && !doUpdateNacenka && !doUpdateBS) {
-			JOptionPane.showMessageDialog(null, "<html><font color=#ffffdd>Выберите хотя бы один вид обновления</font>",
-					"Внимание", JOptionPane.INFORMATION_MESSAGE,
+			JOptionPane.showMessageDialog(null, "<html><font color=#ffffdd>Р’С‹Р±РµСЂРёС‚Рµ С…РѕС‚СЏ Р±С‹ РѕРґРёРЅ РІРёРґ РѕР±РЅРѕРІР»РµРЅРёСЏ</font>",
+					"Р’РЅРёРјР°РЅРёРµ", JOptionPane.INFORMATION_MESSAGE,
 					new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Error-48.png")));
 			instance = null;
 		} else {
@@ -82,7 +82,7 @@ public class RunnerUpdate implements Runnable {
 
 					} else {
 						if (s.getKey().toLowerCase().contains("update") && s.getValue()) {
-							AllWork.getTextArea().append(s.getKey().toLowerCase() + "  не  изменялся...  пропущен\n");
+							AllWork.getTextArea().append(s.getKey().toLowerCase() + "  РЅРµ  РёР·РјРµРЅСЏР»СЃСЏ...  РїСЂРѕРїСѓС‰РµРЅ\n");
 							RepaintProgressBar.repaintProgressBar(100);
 						}
 					}
@@ -106,7 +106,7 @@ public class RunnerUpdate implements Runnable {
 					} else {
 						if (s.getKey().toLowerCase().contains("nacen") && s.getValue()) {
 							AllWork.getTextArea().append(s.getKey().toLowerCase()
-									+ "  не  изменялся...  пропущен\n");
+									+ "  РЅРµ  РёР·РјРµРЅСЏР»СЃСЏ...  РїСЂРѕРїСѓС‰РµРЅ\n");
 							RepaintProgressBar.repaintProgressBar(100);
 						}
 					}
@@ -119,7 +119,7 @@ public class RunnerUpdate implements Runnable {
 				Map<Integer, Integer> hashMap = new HashMap<>();
 
 				for (int i = 0; i < 100; i++){
-				    // Создадим число от 0 до 10
+				    // РЎРѕР·РґР°РґРёРј С‡РёСЃР»Рѕ РѕС‚ 0 РґРѕ 10
 				    int number = random.nextInt(10);
 				    Integer frequency = hashMap.get(number);
 				    hashMap.put(number, frequency == null ? 1 : frequency + 1);
@@ -138,14 +138,14 @@ public class RunnerUpdate implements Runnable {
 								SimplyCopy.simplyCopy(AllWork.TEMP_DIR, AllWork.I_BASE_PRICE);
 							} else {
 								JOptionPane.showMessageDialog(null,
-										"Файл " + zipFileNames[2] + " еще не создан отделом цен.");
+										"Р¤Р°Р№Р» " + zipFileNames[2] + " РµС‰Рµ РЅРµ СЃРѕР·РґР°РЅ РѕС‚РґРµР»РѕРј С†РµРЅ.");
 							}
 							// AllWork.getTextArea().append("\n******************************************************\n");
 							
 						} else{
 							if (s.getKey().toLowerCase().contains("bs" + CurrentDate.currentDate(true)) && s.getValue()) {
 								AllWork.getTextArea().append(s.getKey().toLowerCase()
-										+ "  не  изменялся...  пропущен\n");
+										+ "  РЅРµ  РёР·РјРµРЅСЏР»СЃСЏ...  РїСЂРѕРїСѓС‰РµРЅ\n");
 								RepaintProgressBar.repaintProgressBar(100);
 							}
 						}
@@ -155,7 +155,7 @@ public class RunnerUpdate implements Runnable {
 			PostReindex.postReindex();
 			
 			AllWork.getProgressBar().setValue(AllWork.getProgressBar().getMaximum());
-			new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0], "Обновление");
+			new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0], "РћР±РЅРѕРІР»РµРЅРёРµ");
 			instance = null;
 		}
 	}

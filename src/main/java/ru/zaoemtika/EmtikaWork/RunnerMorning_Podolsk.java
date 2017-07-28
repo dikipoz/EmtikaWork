@@ -42,7 +42,7 @@ public class RunnerMorning_Podolsk implements Runnable {
 		AllWork.getProgressBar().setValue(0);
 		Path path;
 
-		// Копирование из z_defs в c:\_111, распаковка и копирование в
+		// РљРѕРїРёСЂРѕРІР°РЅРёРµ РёР· z_defs РІ c:\_111, СЂР°СЃРїР°РєРѕРІРєР° Рё РєРѕРїРёСЂРѕРІР°РЅРёРµ РІ
 		// i:\base\price
 		{
 			String[] strSuff = { "zip", "db" };
@@ -65,12 +65,12 @@ public class RunnerMorning_Podolsk implements Runnable {
 							break;
 						}
 					} else
-						System.out.println("игнорирование " + zipfilename);
+						System.out.println("РёРіРЅРѕСЂРёСЂРѕРІР°РЅРёРµ " + zipfilename);
 				}
 			}
 		}
 
-		// Копирование из z:\sklads с последующей распаковкой в i:\base\price
+		// РљРѕРїРёСЂРѕРІР°РЅРёРµ РёР· z:\sklads СЃ РїРѕСЃР»РµРґСѓСЋС‰РµР№ СЂР°СЃРїР°РєРѕРІРєРѕР№ РІ i:\base\price
 		AllWork.getListAllSuffix().clear();
 		GetAllSuffixFile.getAllSuffixFile(AllWork.Z_SKLADS, "zip");
 		for (String zipfilename : AllWork.getListAllSuffix()) {
@@ -81,11 +81,11 @@ public class RunnerMorning_Podolsk implements Runnable {
 				ExtractZipArchive.extractZipArchive(AllWork.TEMP_DIR, AllWork.TEMP_DIR, zipfilename);
 				new Delete(AllWork.TEMP_DIR, zipfilename);
 			} else
-				System.out.println("игнорирование " + zipfilename);
+				System.out.println("РёРіРЅРѕСЂРёСЂРѕРІР°РЅРёРµ " + zipfilename);
 		}
 		SimplyCopy.simplyCopy(AllWork.TEMP_DIR, AllWork.I_BASE_PRICE);
 		AllWork.getProgressBar().setValue(AllWork.getProgressBar().getMaximum());
-		new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0], "Утренняя   ");
+		new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0], "РЈС‚СЂРµРЅРЅСЏСЏ   ");
 
 		instance = null;
 	}

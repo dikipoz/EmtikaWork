@@ -18,10 +18,10 @@ public abstract class SimplyCopy {
 		try {
 			Files.walkFileTree(pathSource, new MyFileCopy(pathSource, pathDestination));
 		} catch (IOException e) {
-			AllWork.getTextArea().append(" Не найден файл " + e.getMessage() + "   ошибка!!!!\n");
-			AllWork.setErrList(e.getMessage() + "  ошибка");
+			AllWork.getTextArea().append(" РќРµ РЅР°Р№РґРµРЅ С„Р°Р№Р» " + e.getMessage() + "   РѕС€РёР±РєР°!!!!\n");
+			AllWork.setErrList(e.getMessage() + "  РѕС€РёР±РєР°");
 			AllWork.setErrorsCount(AllWork.getErrorsCount() + 1);
-			//e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 }
@@ -38,34 +38,36 @@ class MyFileCopy extends SimpleFileVisitor<Path> {
 
 		RepaintProgressBar.repaintProgressBar(1);
 		Path newd = destination.resolve(source.relativize(path));
-		
-		if (destination.toString().toLowerCase().contains(AllWork.TEMP_DIR.toLowerCase()) || destination.toString().toLowerCase().contains("roaming")){
-		AllWork.getTextArea()
-				.append(" Копирование  " + path.getFileName().toString().toLowerCase() +  "  с  сервера  FTP...   ");
-		} else {
+
+		if (destination.toString().toLowerCase().contains(AllWork.TEMP_DIR.toLowerCase())
+				|| destination.toString().toLowerCase().contains("roaming")) {
 			AllWork.getTextArea()
-			.append(" Копирование  " + path.getFileName().toString().toLowerCase()  + "  в  " + destination.toString().toLowerCase() +  " ...   ");
+					.append(" РљРѕРїРёСЂРѕРІР°РЅРёРµ  " + path.getFileName().toString().toLowerCase() + "  СЃ  СЃРµСЂРІРµСЂР°  FTP...   ");
+		} else {
+			AllWork.getTextArea().append(" РљРѕРїРёСЂРѕРІР°РЅРёРµ  " + path.getFileName().toString().toLowerCase() + "  РІ  "
+					+ destination.toString().toLowerCase() + " ...   ");
 		}
 		try {
 			Files.copy(path, newd, StandardCopyOption.REPLACE_EXISTING);
-			AllWork.getTextArea().append("готово \n");
+			AllWork.getTextArea().append("РіРѕС‚РѕРІРѕ \n");
 		} catch (IOException e) {
 			try {
-				AllWork.getTextArea().append("... попытка повторного копирования ...\n");
+				AllWork.getTextArea().append("... РїРѕРїС‹С‚РєР° РїРѕРІС‚РѕСЂРЅРѕРіРѕ РєРѕРїРёСЂРѕРІР°РЅРёСЏ ...\n");
 				Files.copy(path, newd, StandardCopyOption.REPLACE_EXISTING);
-				AllWork.getTextArea().append("готово \n");
+				AllWork.getTextArea().append("РіРѕС‚РѕРІРѕ \n");
 			} catch (IOException ex) {
-				AllWork.getTextArea().append("ошибка \n");
-				AllWork.setErrList(ex.getMessage() + " повторное копирование ");
+				AllWork.getTextArea().append("РѕС€РёР±РєР° \n");
+				AllWork.setErrList(ex.getMessage() + " РїРѕРІС‚РѕСЂРЅРѕРµ РєРѕРїРёСЂРѕРІР°РЅРёРµ ");
 				AllWork.setErrorsCount(AllWork.getErrorsCount() + 1);
 				e.printStackTrace();
 			}
-			/*AllWork.getTextArea().append("ошибка \n");
-			AllWork.setErrList(e.getMessage() + " копирование ");
-			AllWork.setErrorsCount(AllWork.getErrorsCount() + 1);
-			e.printStackTrace();*/
+			/*
+			 * AllWork.getTextArea().append("РѕС€РёР±РєР° \n");
+			 * AllWork.setErrList(e.getMessage() + " РєРѕРїРёСЂРѕРІР°РЅРёРµ ");
+			 * AllWork.setErrorsCount(AllWork.getErrorsCount() + 1);
+			 * e.printStackTrace();
+			 */
 		}
 		return FileVisitResult.CONTINUE;
 	}
-
 }

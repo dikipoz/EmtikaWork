@@ -14,7 +14,7 @@ public class Program {
 		File semaphore = new File(System.getProperty("user.home") + File.separator + "AppData" + File.separator
 				+ "Roaming" + File.separator + "Emtika Work" + File.separator + "semaphore.emt");
 		if (semaphore.exists()) {
-			String pr_name = "javaw.exe".toLowerCase(); // <-- èñêîìûé ïðîöåññ
+			String pr_name = "javaw.exe".toLowerCase(); // <-- Ð¸ÑÐºÐ¾Ð¼Ñ‹Ð¹ Ð¿Ñ€Ð¾Ñ†ÐµÑÑ
 			String process_line;
 			int flag = 0;
 			try {
@@ -22,7 +22,7 @@ public class Program {
 						.exec(System.getenv("windir") + File.separator + "system32" + File.separator + "tasklist.exe");
 				BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 				while ((process_line = input.readLine()) != null) {
-					if (process_line.toLowerCase().contains(pr_name)) { // <-- ïîèñê ïðîöåññà
+					if (process_line.toLowerCase().contains(pr_name)) { // <-- Ð¿Ð¾Ð¸ÑÐº Ð¿Ñ€Ð¾Ñ†ÐµÑÑÐ°
 						flag++;
 					}
 				}

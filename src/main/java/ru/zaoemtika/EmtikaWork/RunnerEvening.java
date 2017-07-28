@@ -47,26 +47,26 @@ public class RunnerEvening implements Runnable {
 		// new Delete(DISK_i);
 		if (!doDeficit && !doSklad && !doClearDoc) {
 			JOptionPane.showMessageDialog(null,
-					"<html><font color=#ffffdd>Выберите вид вечерней работы</font>", "Внимание",
+					"<html><font color=#ffffdd>Р’С‹Р±РµСЂРёС‚Рµ РІРёРґ РІРµС‡РµСЂРЅРµР№ СЂР°Р±РѕС‚С‹</font>", "Р’РЅРёРјР°РЅРёРµ",
 					JOptionPane.INFORMATION_MESSAGE,
 					new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Error-48.png")));
 			instance = null;
 		} else {
-			// -------------- Копирование дефицита в папку DEFS
+			// -------------- РљРѕРїРёСЂРѕРІР°РЅРёРµ РґРµС„РёС†РёС‚Р° РІ РїР°РїРєСѓ DEFS
 			AllWork.setErrorsCount(0);
 			AllWork.getTextArea().setText(null);
 			AllWork.getProgressBar().setMaximum(100);
 			AllWork.getProgressBar().setValue(0);
 			if (doDeficit) {
-				// Удаление всего из I_CASE_MODEM_DEF и копирование defxx.db
+				// РЈРґР°Р»РµРЅРёРµ РІСЃРµРіРѕ РёР· I_CASE_MODEM_DEF Рё РєРѕРїРёСЂРѕРІР°РЅРёРµ defxx.db
 				new Delete(AllWork.I_CASE_MODEM_DEF);
 				SimplyCopy.simplyCopy(AllWork.C_PRIC1B_64 + "defemt.db", AllWork.I_CASE_MODEM_DEF + AllWork.getFilial()[3]);
 
-				// для индексного файла находим правильное имя
+				// РґР»СЏ РёРЅРґРµРєСЃРЅРѕРіРѕ С„Р°Р№Р»Р° РЅР°С…РѕРґРёРј РїСЂР°РІРёР»СЊРЅРѕРµ РёРјСЏ
 				StringBuilder str = new StringBuilder(AllWork.getFilial()[3]);
 				str.replace(0, str.length(), str.delete(str.indexOf("."), str.length()).toString());
 
-				// копирование defxx.px
+				// РєРѕРїРёСЂРѕРІР°РЅРёРµ defxx.px
 				SimplyCopy.simplyCopy(AllWork.C_PRIC1B_64 + "defemt.px", AllWork.I_CASE_MODEM_DEF + str + ".px");
 
 				File destPath = new File(AllWork.I_CASE_MODEM_DEF);
@@ -80,15 +80,15 @@ public class RunnerEvening implements Runnable {
 				new Delete(AllWork.TEMP_DIR, "def_" + AllWork.getFilial()[6] + ".zip");
 			}
 
-			// ------------------------- Копирование склада в SKLADS
+			// ------------------------- РљРѕРїРёСЂРѕРІР°РЅРёРµ СЃРєР»Р°РґР° РІ SKLADS
 			if (doSklad) {
 				new Delete(AllWork.I_CASE_MODEM_SK);
 				SimplyCopy.simplyCopy(AllWork.I_BASE_PRICE + AllWork.getFilial()[1], AllWork.I_CASE_MODEM_SK + AllWork.getFilial()[1]);
 
-				// копирование S1xx000000.db из i:/base/price в i:/case/modem/sk
+				// РєРѕРїРёСЂРѕРІР°РЅРёРµ S1xx000000.db РёР· i:/base/price РІ i:/case/modem/sk
 				SimplyCopy.simplyCopy(AllWork.I_BASE_PRICE + AllWork.getFilial()[5], AllWork.I_CASE_MODEM_SK + AllWork.getFilial()[5]);
 
-				// Архивирование S1 и eexx_n2.db на z:\skalds\
+				// РђСЂС…РёРІРёСЂРѕРІР°РЅРёРµ S1 Рё eexx_n2.db РЅР° z:\skalds\
 				File destPath = new File(AllWork.I_CASE_MODEM_SK);
 				String[] sDirList = CreateFileNameArray.createFileNameArray(destPath);
 				CreateZipArchive.createZipArchive(destPath, sDirList, AllWork.TEMP_DIR, "sk_" + AllWork.getFilial()[6]);
@@ -97,8 +97,8 @@ public class RunnerEvening implements Runnable {
 				new Delete(AllWork.TEMP_DIR, "sk_" + AllWork.getFilial()[6] + ".zip");
 			}
 
-			// ---------------------- Копирование DOC на сервер и в
-			// i:/case/counts с удалением
+			// ---------------------- РљРѕРїРёСЂРѕРІР°РЅРёРµ DOC РЅР° СЃРµСЂРІРµСЂ Рё РІ
+			// i:/case/counts СЃ СѓРґР°Р»РµРЅРёРµРј
 
 			String mskOrNo = (AllWork.getFilial()[6].equals("opt") ? "mos": AllWork.getFilial()[6]);
 			File destPath = new File(AllWork.I_BASE_DOC);
@@ -113,17 +113,17 @@ public class RunnerEvening implements Runnable {
 				if (Files.exists(path, LinkOption.NOFOLLOW_LINKS) && Files.isReadable(path)) {
 					SimplyCopy.simplyCopy(path.toString(), AllWork.TEMP_DIR + mskOrNo + "_"
 							+ new StringBuilder(CurrentDate.currentDate(true)).delete(0, 2) + ".zip");
-					// Разархивируем из z:\counts файл свертки на TEMP_DIR
+					// Р Р°Р·Р°СЂС…РёРІРёСЂСѓРµРј РёР· z:\counts С„Р°Р№Р» СЃРІРµСЂС‚РєРё РЅР° TEMP_DIR
 					ExtractZipArchive.extractZipArchive(AllWork.TEMP_DIR, AllWork.TEMP_DIR, mskOrNo + "_"
 							+ new StringBuilder(CurrentDate.currentDate(true)).delete(0, 2) + ".zip");
-					// Копируем недостающее из i:\base\doc в TEMP_DIR
+					// РљРѕРїРёСЂСѓРµРј РЅРµРґРѕСЃС‚Р°СЋС‰РµРµ РёР· i:\base\doc РІ TEMP_DIR
 					for (String sdirlist : sDirList) {
 						SimplyCopy.simplyCopy(AllWork.I_BASE_DOC + sdirlist, AllWork.TEMP_DIR + sdirlist);
 					}
-					// Удаляем из TEMP_DIR архив свертки
+					// РЈРґР°Р»СЏРµРј РёР· TEMP_DIR Р°СЂС…РёРІ СЃРІРµСЂС‚РєРё
 					new Delete(AllWork.TEMP_DIR, mskOrNo + "_"
 							+ new StringBuilder(CurrentDate.currentDate(true)).delete(0, 2) + ".zip");
-					// Создаем архив свертки из TEMP_DIR на ФТП
+					// РЎРѕР·РґР°РµРј Р°СЂС…РёРІ СЃРІРµСЂС‚РєРё РёР· TEMP_DIR РЅР° Р¤РўРџ
 					sDirList = CreateFileNameArray.createFileNameArray(new File(AllWork.TEMP_DIR));
 					CreateZipArchive.createZipArchive(new File(AllWork.TEMP_DIR), sDirList, AllWork.I_CASE_COUNTS,
 							mskOrNo + "_" + new StringBuilder(CurrentDate.currentDate(true)).delete(0, 2));
@@ -143,13 +143,13 @@ public class RunnerEvening implements Runnable {
 			} else {
 				AllWork.getProgressBar().setValue(24);
 				JOptionPane.showMessageDialog(null,
-						"каталог I:" + File.separator + "BASE" + File.separator + "DOC пустой.");
+						"РєР°С‚Р°Р»РѕРі I:" + File.separator + "BASE" + File.separator + "DOC РїСѓСЃС‚РѕР№.");
 			}
 
-			// -------- Собственно очистка i:\base\doc ----------
+			// -------- РЎРѕР±СЃС‚РІРµРЅРЅРѕ РѕС‡РёСЃС‚РєР° i:\base\doc ----------
 
 			AllWork.getProgressBar().setValue(AllWork.getProgressBar().getMaximum());
-			new Done(false, AllWork.getErrorsCount(),AllWork.getFilial()[0], "Вечерняя   ");
+			new Done(false, AllWork.getErrorsCount(),AllWork.getFilial()[0], "Р’РµС‡РµСЂРЅСЏСЏ   ");
 			instance = null;
 		}
 	}

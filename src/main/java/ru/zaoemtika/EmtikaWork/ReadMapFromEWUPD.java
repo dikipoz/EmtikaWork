@@ -53,7 +53,7 @@ public class ReadMapFromEWUPD {
 				}
 				readerLocalEW.close();
 			} catch (IOException e) {
-				System.out.println("заполнение staffLocal");
+				System.out.println("Р·Р°РїРѕР»РЅРµРЅРёРµ staffLocal");
 				for (Map.Entry<String, String> sS : staffServer.entrySet()) {
 					staffLocal.put(sS.getKey().toUpperCase(), "ffffffffffffffffffffffffffffffff");
 				}
@@ -107,7 +107,7 @@ public class ReadMapFromEWUPD {
 			for (Map.Entry<String, String> entry : staffLocal.entrySet()) {
 				writer.write(entry.getKey() + " " + entry.getValue() + "\n");
 			}
-			AllWork.getTextArea().append(" Сохранение изменений в ewupd.txt...  готово\n");
+			AllWork.getTextArea().append(" РЎРѕС…СЂР°РЅРµРЅРёРµ РёР·РјРµРЅРµРЅРёР№ РІ ewupd.txt...  РіРѕС‚РѕРІРѕ\n");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}*/

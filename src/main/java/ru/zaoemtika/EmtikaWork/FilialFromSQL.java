@@ -16,8 +16,8 @@ public class FilialFromSQL {
 	public static String[] filialFromSQL(String userlogin) throws SQLException{
 		String[] needFiles = new String[9];
 		
-		String query = "select Ф#И#О#, [e-mail], [Филиал 1], [Код склада], [Дефицит], [Счета по дефициту], [SUR], [Код  полного склада], [N предпр]  "
-				+ " from EMT2010.dbo.SHTAT inner join EMT2010.dbo.Filials on [Номер предприятия]=[N предпр]";
+		String query = "select Р¤#Р#Рћ#, [e-mail], [Р¤РёР»РёР°Р» 1], [РљРѕРґ СЃРєР»Р°РґР°], [Р”РµС„РёС†РёС‚], [РЎС‡РµС‚Р° РїРѕ РґРµС„РёС†РёС‚Сѓ], [SUR], [РљРѕРґ  РїРѕР»РЅРѕРіРѕ СЃРєР»Р°РґР°], [N РїСЂРµРґРїСЂ]  "
+				+ " from EMT2010.dbo.SHTAT inner join EMT2010.dbo.Filials on [РќРѕРјРµСЂ РїСЂРµРґРїСЂРёСЏС‚РёСЏ]=[N РїСЂРµРґРїСЂ]";
 		
 		DriverManager.registerDriver(new net.sourceforge.jtds.jdbc.Driver());
 		try(
@@ -28,41 +28,41 @@ public class FilialFromSQL {
 		{
 		    while(rs.next()){
 		        if(rs.getString("e-mail").toLowerCase().contains(userlogin.toLowerCase())){
-		        	if (rs.getString("Филиал 1") != null && !rs.getString("Филиал 1").isEmpty()){
-		        		needFiles[0] = rs.getString("Филиал 1");
+		        	if (rs.getString("Р¤РёР»РёР°Р» 1") != null && !rs.getString("Р¤РёР»РёР°Р» 1").isEmpty()){
+		        		needFiles[0] = rs.getString("Р¤РёР»РёР°Р» 1");
 		        	} else needFiles[0] = "";
-		        	if (rs.getString("Код склада") != null && !rs.getString("Код склада").isEmpty()){
-		        		needFiles[1] = rs.getString("Код склада");
+		        	if (rs.getString("РљРѕРґ СЃРєР»Р°РґР°") != null && !rs.getString("РљРѕРґ СЃРєР»Р°РґР°").isEmpty()){
+		        		needFiles[1] = rs.getString("РљРѕРґ СЃРєР»Р°РґР°");
 		        	} else needFiles[1] = "";
-		        	if (rs.getString("Дефицит") != null && !rs.getString("Дефицит").isEmpty()){
-		        		needFiles[2] = rs.getString("Дефицит").toLowerCase();
+		        	if (rs.getString("Р”РµС„РёС†РёС‚") != null && !rs.getString("Р”РµС„РёС†РёС‚").isEmpty()){
+		        		needFiles[2] = rs.getString("Р”РµС„РёС†РёС‚").toLowerCase();
 		        	} else needFiles[2] = "";
-		        	if (rs.getString("Счета по дефициту") != null && !rs.getString("Счета по дефициту").isEmpty()){
-		        		needFiles[3] = rs.getString("Счета по дефициту").toLowerCase();
+		        	if (rs.getString("РЎС‡РµС‚Р° РїРѕ РґРµС„РёС†РёС‚Сѓ") != null && !rs.getString("РЎС‡РµС‚Р° РїРѕ РґРµС„РёС†РёС‚Сѓ").isEmpty()){
+		        		needFiles[3] = rs.getString("РЎС‡РµС‚Р° РїРѕ РґРµС„РёС†РёС‚Сѓ").toLowerCase();
 		        	} else needFiles[3] = "";
 		        	if (rs.getString("SUR") != null && !rs.getString("SUR").isEmpty()){
 		        		needFiles[4] = rs.getString("SUR").toLowerCase();
 		        	} else needFiles[4] = "";
-		        	if (rs.getString("Код  полного склада") != null && !rs.getString("Код  полного склада").isEmpty()){
-		        		needFiles[5] = (rs.getString("Код  полного склада")).toLowerCase();
+		        	if (rs.getString("РљРѕРґ  РїРѕР»РЅРѕРіРѕ СЃРєР»Р°РґР°") != null && !rs.getString("РљРѕРґ  РїРѕР»РЅРѕРіРѕ СЃРєР»Р°РґР°").isEmpty()){
+		        		needFiles[5] = (rs.getString("РљРѕРґ  РїРѕР»РЅРѕРіРѕ СЃРєР»Р°РґР°")).toLowerCase();
 		        	} else needFiles[5] = "";
-		        	if (rs.getString("Дефицит") != null && !rs.getString("Дефицит").isEmpty()){
-		        		needFiles[6] = rs.getString("Дефицит").substring(4, rs.getString("Дефицит").indexOf('.')).toLowerCase();
+		        	if (rs.getString("Р”РµС„РёС†РёС‚") != null && !rs.getString("Р”РµС„РёС†РёС‚").isEmpty()){
+		        		needFiles[6] = rs.getString("Р”РµС„РёС†РёС‚").substring(4, rs.getString("Р”РµС„РёС†РёС‚").indexOf('.')).toLowerCase();
 		        	} else needFiles[6] = "";
-		        	if (rs.getString("Ф#И#О#") != null && !rs.getString("Ф#И#О#").isEmpty()){
-		        		needFiles[7] = rs.getString("Ф#И#О#");
+		        	if (rs.getString("Р¤#Р#Рћ#") != null && !rs.getString("Р¤#Р#Рћ#").isEmpty()){
+		        		needFiles[7] = rs.getString("Р¤#Р#Рћ#");
 		        	} else needFiles[7] = "";
-		        	if (rs.getString("N предпр") != null && !rs.getString("N предпр").isEmpty()){
-		        		needFiles[8] = rs.getString("N предпр");
+		        	if (rs.getString("N РїСЂРµРґРїСЂ") != null && !rs.getString("N РїСЂРµРґРїСЂ").isEmpty()){
+		        		needFiles[8] = rs.getString("N РїСЂРµРґРїСЂ");
 		        	} else needFiles[8] = "";
 		        	return needFiles;
 		        } 
 		    }
 		    } catch (SQLException e){
-		    	JOptionPane.showMessageDialog(null, "Нет сети или нет подключения к SQL серверу. Обратитесь к администратору", "Ошибка",
+		    	JOptionPane.showMessageDialog(null, "РќРµС‚ СЃРµС‚Рё РёР»Рё РЅРµС‚ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє SQL СЃРµСЂРІРµСЂСѓ. РћР±СЂР°С‚РёС‚РµСЃСЊ Рє Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂСѓ", "РћС€РёР±РєР°",
 						JOptionPane.OK_OPTION, null);
 		    }
-		JOptionPane.showMessageDialog(null, "Пользователь не найден. Обратитесь к администратору", "Ошибка",
+		JOptionPane.showMessageDialog(null, "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ. РћР±СЂР°С‚РёС‚РµСЃСЊ Рє Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂСѓ", "РћС€РёР±РєР°",
 				JOptionPane.OK_OPTION, null);
 		System.exit(0);
 		return needFiles;

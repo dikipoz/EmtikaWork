@@ -177,7 +177,7 @@ public class SwingMainFrame extends JFrame {
 		try {
 			needFiles = FilialFromSQL.filialFromSQL(System.getProperties().getProperty("user.name"));
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Пользователь не найден");
+			JOptionPane.showMessageDialog(null, "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ");
 		}
 
 		try {
@@ -731,7 +731,7 @@ public class SwingMainFrame extends JFrame {
 			setClick(true);
 			if (isAM_PM() && !rUpd && RunnerEvening.getInstance() == null && RunnerEvening_Podolsk.getInstance() == null
 					&& RunnerUpdate.getInstance() == null) {
-				System.out.println("Утро");
+				System.out.println("РЈС‚СЂРѕ");
 				if (!needFiles[8].equals("6101")) {
 					new Thread(RunnerMorning.runnerMorning(needFiles, progressBar, textArea)).start();
 				} else {
@@ -739,7 +739,7 @@ public class SwingMainFrame extends JFrame {
 				}
 			} else if (!isAM_PM() && !rUpd && RunnerMorning.getInstance() == null
 					&& RunnerMorning_Podolsk.getInstance() == null && RunnerUpdate.getInstance() == null) {
-				System.out.println("Вечер");
+				System.out.println("Р’РµС‡РµСЂ");
 				if (!needFiles[8].equals("6101")) {
 					new Thread(RunnerEvening.runnerEvening(needFiles, progressBar, textArea, isDoDeficit(), isDoSklad(),
 							isDoClearDoc())).start();
@@ -757,7 +757,7 @@ public class SwingMainFrame extends JFrame {
 		bYes.removeActionListener(null);
 
 		contentPane.add(bYes);
-		// чекбокс ОБНОВЛЕНИЕ СЧЕТОВ
+		// С‡РµРєР±РѕРєСЃ РћР‘РќРћР’Р›Р•РќРР• РЎР§Р•РўРћР’
 		StringBuilder sb = new StringBuilder();
 		String fileAttr = null;
 		try {
@@ -793,7 +793,7 @@ public class SwingMainFrame extends JFrame {
 		}
 		contentPane.add(chckbxInvoice);
 
-		// чекбокс ОБНОВЛЕНИЕ НАЦЕНКИ
+		// С‡РµРєР±РѕРєСЃ РћР‘РќРћР’Р›Р•РќРР• РќРђР¦Р•РќРљР
 		sb = new StringBuilder();
 		try {
 			fileAttr = Files.getLastModifiedTime(Paths.get(AllWork.Z_TO_ALL + File.separator + "nacen.zip"),
@@ -1059,7 +1059,7 @@ public class SwingMainFrame extends JFrame {
 		return doClearOrFast;
 	}
 
-	// реализация событий для чекбоксов и мыши
+	// СЂРµР°Р»РёР·Р°С†РёСЏ СЃРѕР±С‹С‚РёР№ РґР»СЏ С‡РµРєР±РѕРєСЃРѕРІ Рё РјС‹С€Рё
 	class CheckBoxAction implements MouseListener {
 
 		JCheckBox checkBox;
@@ -1114,7 +1114,7 @@ public class SwingMainFrame extends JFrame {
 
 	}
 
-	// реализация событий для радиобаттона и мыши
+	// СЂРµР°Р»РёР·Р°С†РёСЏ СЃРѕР±С‹С‚РёР№ РґР»СЏ СЂР°РґРёРѕР±Р°С‚С‚РѕРЅР° Рё РјС‹С€Рё
 	class RadioButtonMouseAction implements MouseListener {
 
 		JRadioButton buttonThis;
