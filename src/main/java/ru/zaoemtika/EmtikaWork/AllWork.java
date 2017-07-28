@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 
 public abstract class AllWork {
 
+	// Кодовая страница
 	private static String[] fileExt = new String[] { "ZIP", "LCK", "EXE", "INI", "FAM", "TV", "PIF" };
 	private static List<String> listAllSuffix = new ArrayList<>();
 	private static List<String> errList = new ArrayList<>();

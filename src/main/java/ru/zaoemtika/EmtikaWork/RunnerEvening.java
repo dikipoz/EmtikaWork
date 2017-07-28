@@ -47,7 +47,7 @@ public class RunnerEvening implements Runnable {
 		// new Delete(DISK_i);
 		if (!doDeficit && !doSklad && !doClearDoc) {
 			JOptionPane.showMessageDialog(null,
-					"<html><font color=#ffffdd>Выберите хотя бы один вид вечерней работы</font>", "Внимание",
+					"<html><font color=#ffffdd>Выберите вид вечерней работы</font>", "Внимание",
 					JOptionPane.INFORMATION_MESSAGE,
 					new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Error-48.png")));
 			instance = null;

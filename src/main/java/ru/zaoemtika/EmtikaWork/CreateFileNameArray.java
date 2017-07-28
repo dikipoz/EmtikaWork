@@ -6,14 +6,13 @@ public class CreateFileNameArray {
 	public static String[] createFileNameArray(File f){
 		String[] sDirList = f.list();
 		if(!f.exists()){
-			AllWork.getTextArea().append("ошибка \n");
+			AllWork.getTextArea().append("РѕС€РёР±РєР° \n");
 			  //System.exit(0);
 		}
 		if(!f.isDirectory()){
-			AllWork.getTextArea().append("ошибка \n");
+			AllWork.getTextArea().append("РѕС€РёР±РєР° \n");
 			//System.exit(0);
 		}
 		return sDirList;
 	}
 }
-

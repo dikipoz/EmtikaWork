@@ -57,8 +57,8 @@ public class CheckUpdate {
 			});
 			is.close();
 			os.close();
-			/*JOptionPane.showMessageDialog(null, "Программа обновилась \n      до версии " + str.toString(),
-					"Статус обновления", JOptionPane.OK_CANCEL_OPTION);*/
+			/*JOptionPane.showMessageDialog(null, "РџСЂРѕРіСЂР°РјРјР° РѕР±РЅРѕРІРёР»Р°СЃСЊ \n      РґРѕ РІРµСЂСЃРёРё " + str.toString(),
+					"РЎС‚Р°С‚СѓСЃ РѕР±РЅРѕРІР»РµРЅРёСЏ", JOptionPane.OK_CANCEL_OPTION);*/
 			Files.deleteIfExists(Paths.get(System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming"
 					+ File.separator + "Emtika Work" + File.separator + "semaphore.emt"));
 			System.exit(0);

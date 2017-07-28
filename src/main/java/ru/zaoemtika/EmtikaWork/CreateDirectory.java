@@ -12,7 +12,7 @@ public abstract class CreateDirectory {
 		try {
 			Files.createDirectory(crDirectory);
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, "Невозможно подключить ресурс", "Ошибка",
+			JOptionPane.showMessageDialog(null, "РќРµРІРѕР·РјРѕР¶РЅРѕ РїРѕРґРєР»СЋС‡РёС‚СЊ СЂРµСЃСѓСЂСЃ", "РћС€РёР±РєР°",
 					JOptionPane.OK_OPTION, null);
 			e.printStackTrace();
 		}
