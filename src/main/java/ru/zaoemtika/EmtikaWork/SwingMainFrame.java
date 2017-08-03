@@ -149,7 +149,8 @@ public class SwingMainFrame extends JFrame {
 		setResizable(false);
 		setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Octopus100.png")));
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Octopus100.png")));
 		// setBackGroundColor(new Color(102,26,42));
 		setBackGroundColor(new Color(51, 51, 51));
 		setForegroundColor(SystemColor.desktop);
@@ -384,19 +385,26 @@ public class SwingMainFrame extends JFrame {
 		contentPane.add(scrollPane);
 
 		System.out.println(isAM_PM());
-		rMorning = new JRadioButton(
-				"\u0423\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u0440\u0430\u0431\u043E\u0442\u0430", isAM_PM());
+
+		rMorning = new JRadioButton("", isAM_PM());
 		rMorning.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		rEvening = new JRadioButton(
-				"\u0412\u0435\u0447\u0435\u0440\u043D\u044F\u044F \u0440\u0430\u0431\u043E\u0442\u0430", !isAM_PM());
+	
+		rEvening = new JRadioButton("", !isAM_PM());
 		rEvening.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
 		rUpdate = new JRadioButton(
 				"\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435 (\u0432\u043E \u0432\u0440\u0435\u043C\u044F \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E \u0434\u043D\u044F)",
 				isrUpd());
 		rUpdate.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rUpdate.setActionCommand(
 				"\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435 (\u0432\u043E \u0432\u0440\u0435\u043C\u044F \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E \u0434\u043D\u044F)");
-
+		if (needFiles[8].equals("6101")) {
+			rMorning.setText("\u0414\u0435\u0444\u0438\u0446\u0438\u0442\u044B \u0438 \u0441\u043A\u043B\u0430\u0434\u044B \u0444\u0438\u043B\u0438\u0430\u043B\u043E\u0432");
+			rEvening.setText("\u0420\u0430\u0437\u0434\u0430\u0447\u0430 \u0438 \u0441\u0432\u0435\u0440\u0442\u043A\u0430");
+		} else{
+			rMorning.setText("\u0423\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u0440\u0430\u0431\u043E\u0442\u0430");
+			rEvening.setText("\u0412\u0435\u0447\u0435\u0440\u043D\u044F\u044F \u0440\u0430\u0431\u043E\u0442\u0430");
+		}
 		if (rMorning.isSelected()) {
 			rMorning.setIcon(new ImageIcon(
 					SwingMainFrame.class.getResource("/ru/zaoemtika/images/rButton_pressed_default.png")));
@@ -412,7 +420,7 @@ public class SwingMainFrame extends JFrame {
 				"\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0434\u0430\u043D\u043D\u044B\u0445 \u0441 \u0424\u0422\u041F");
 		rMorning.setForeground(color);
 		rMorning.setFont(new Font("SansSerif", Font.BOLD, 13));
-		rMorning.setBounds(10, 75, 141, 23);
+		rMorning.setBounds(10, 75, 277, 23);
 		rMorning.addMouseListener(new RadioButtonMouseAction(rMorning, rEvening, rUpdate));
 
 		rMorning.addActionListener((e) -> {
@@ -452,7 +460,7 @@ public class SwingMainFrame extends JFrame {
 				"\u0412\u044B\u0433\u0440\u0443\u0437\u043A\u0430 \u0434\u0435\u0444\u0438\u0446\u0438\u0442\u0430"
 						+ " \u0438 \u0441\u043A\u043B\u0430\u0434\u0430 \u043D\u0430 \u0424\u0422\u041F");
 		rEvening.setFont(new Font("SansSerif", Font.BOLD, 13));
-		rEvening.setBounds(10, 112, 157, 23);
+		rEvening.setBounds(10, 112, 277, 23);
 		rEvening.addMouseListener(new RadioButtonMouseAction(rEvening, rMorning, rUpdate));
 
 		rEvening.addActionListener((e) -> {

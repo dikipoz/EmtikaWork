@@ -70,6 +70,7 @@ public class RunnerMorning_Podolsk implements Runnable {
 			}
 		}
 
+		//System.exit(0);
 		// Копирование из z:\sklads с последующей распаковкой в i:\base\price
 		AllWork.getListAllSuffix().clear();
 		GetAllSuffixFile.getAllSuffixFile(AllWork.Z_SKLADS, "zip");
