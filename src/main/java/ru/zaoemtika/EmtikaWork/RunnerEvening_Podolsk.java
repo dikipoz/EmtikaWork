@@ -53,9 +53,11 @@ public class RunnerEvening_Podolsk implements Runnable {
 		if (!Files.isDirectory(dir, LinkOption.NOFOLLOW_LINKS)) {
 			CreateDirectory.createDirectory(dir);
 		}
-		System.out.println(doDeficit);
-		System.out.println(doSklad);
-		System.out.println(doClearDoc);
+		// копирование post.* из i:\case\003 в z:\defs
+		SimplyCopy.simplyCopy(AllWork.I_CASE_003 + "post.db".toLowerCase(), AllWork.Z_DEFS + "post.db".toLowerCase());
+		SimplyCopy.simplyCopy(AllWork.I_CASE_003 + "post.px".toLowerCase(), AllWork.Z_DEFS + "post.px".toLowerCase());
+		
+		// копирование дефицита в z:\defs
 		if (doDeficit) {
 			String[] defFiles = new String[4];
 			defFiles[0] = "defemtik.db";
@@ -84,6 +86,7 @@ public class RunnerEvening_Podolsk implements Runnable {
 
 		}
 
+		// копирование складов в z:\sklads
 		if (doSklad) {
 			CreateZipArchive.createZipArchive(new File(AllWork.I_BASE_PRICE), new String[] { "s1к20000.db" },
 					AllWork.C_CASE, "SK_BASA".toUpperCase());
