@@ -137,7 +137,7 @@ public class RunnerEvening_Podolsk implements Runnable {
 		}
 
 		AllWork.getProgressBar().setValue(AllWork.getProgressBar().getMaximum());
-		new Done(false, AllWork.getErrorsCount(), AllWork.getFilial()[0], "Вечерняя   ");
+		new Done(false, AllWork.getErrorsCount(), AllWork.getFilial()[0], "\u0420\u0430\u0437\u0434\u0430\u0447\u0430 \u0438 \u0441\u0432\u0435\u0440\u0442\u043A\u0430   ");
 		instance = null;
 
 	}

@@ -17,9 +17,9 @@ public class ExtractZipArchive {
 		File f;
 		try {
 			AllWork.getTextArea().append(" Распаковка  " + filename.toString().toLowerCase() + " ...    ");
-			// Charset CP866 = Charset.forName("CP866");
-			Charset UTF8 = Charset.forName("UTF8");
-			ZipFile zip = new ZipFile(dirPathSource + filename, UTF8);
+			Charset CP866 = Charset.forName("CP866");
+			//Charset UTF8 = Charset.forName("UTF8");
+			ZipFile zip = new ZipFile(dirPathSource + filename, CP866);
 			Enumeration<? extends ZipEntry> entries = zip.entries();
 			LinkedList<ZipEntry> zfiles = new LinkedList<ZipEntry>();
 			while (entries.hasMoreElements()) {

@@ -264,7 +264,7 @@ public class RunnerMorning implements Runnable {
 		PostReindex.postReindex();
 		
 		AllWork.getProgressBar().setValue(AllWork.getProgressBar().getMaximum());
-		new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0], "Утренняя    ");
+		new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0], "\u0423\u0442\u0440\u0435\u043D\u043D\u044F\u044F    ");
 
 		instance = null;
 	}

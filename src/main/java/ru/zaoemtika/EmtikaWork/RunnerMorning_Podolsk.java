@@ -86,7 +86,7 @@ public class RunnerMorning_Podolsk implements Runnable {
 		}
 		SimplyCopy.simplyCopy(AllWork.TEMP_DIR, AllWork.I_BASE_PRICE);
 		AllWork.getProgressBar().setValue(AllWork.getProgressBar().getMaximum());
-		new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0], "\u0423\u0442\u0440\u0435\u043D\u043D\u044F\u044F   ");
+		new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0], "\u0414\u0430\u043D\u043D\u044B\u0435 \u043E\u0442 \u0444\u0438\u043B\u0438\u0430\u043B\u043E\u0432   ");
 
 		instance = null;
 	}
