@@ -23,6 +23,7 @@ public class CheckUpdate {
 				+ "EmtikaWork" + File.separator + "EmtWork.exe";
 		String destination = System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming"
 				+ File.separator + "Emtika Work" + File.separator + "EmtWork.exe";
+		
 		FileReader file = new FileReader(File.separator + File.separator + "zeon" + File.separator + "EMT2012"
 				+ File.separator + "EmtikaWork" + File.separator + "version.manifest");
 		int c;
@@ -57,12 +58,16 @@ public class CheckUpdate {
 			});
 			is.close();
 			os.close();
-			/*JOptionPane.showMessageDialog(null, "Программа обновилась \n      до версии " + str.toString(),
-					"Статус обновления", JOptionPane.OK_CANCEL_OPTION);*/
 			Files.deleteIfExists(Paths.get(System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming"
 					+ File.separator + "Emtika Work" + File.separator + "semaphore.emt"));
 			System.exit(0);
 		} else {
+			try {
+				ConnectSources.connectSources();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
 					try {

@@ -65,6 +65,6 @@ public class FilialFromSQL {
 		JOptionPane.showMessageDialog(null, "Пользователь не найден. Обратитесь к администратору", "Ошибка",
 				JOptionPane.OK_OPTION, null);
 		System.exit(0);
-		return needFiles;
+		return null;
 	}
 }

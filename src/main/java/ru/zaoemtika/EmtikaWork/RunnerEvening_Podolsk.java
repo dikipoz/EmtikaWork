@@ -46,7 +46,7 @@ public class RunnerEvening_Podolsk implements Runnable {
 	public void run() {
 		AllWork.setErrorsCount(0);
 		AllWork.getTextArea().setText(null);
-		AllWork.getProgressBar().setMaximum(300);
+		AllWork.getProgressBar().setMaximum(400);
 		AllWork.getProgressBar().setValue(0);
 
 		Path dir = Paths.get(AllWork.C_CASE);

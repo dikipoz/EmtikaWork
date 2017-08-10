@@ -181,12 +181,8 @@ public class SwingMainFrame extends JFrame {
 			JOptionPane.showMessageDialog(null, "Пользователь не найден");
 		}
 
-		try {
-			ConnectSources.connectSources();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-
+		
+		
 		if (!needFiles[8].equals("6101")) {
 			doClearDoc = true;
 		} else {
