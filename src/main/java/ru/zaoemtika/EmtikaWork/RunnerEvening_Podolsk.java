@@ -100,7 +100,9 @@ public class RunnerEvening_Podolsk implements Runnable {
 		if (sDirList.length > 0) {
 			AllWork.getProgressBar().setMaximum(AllWork.getProgressBar().getMaximum() + sDirList.length);
 			for (String dirContents : sDirList) {
-				SimplyCopy.simplyCopy(AllWork.I_BASE_DOC + dirContents, AllWork.I_BASE_OLD_CH + dirContents);
+				//System.out.println(dirContents.substring(dirContents.length()-2, dirContents.length()));
+				if (dirContents.substring(dirContents.length()-2, dirContents.length()).toLowerCase().equals("db"))
+					SimplyCopy.simplyCopy(AllWork.I_BASE_DOC + dirContents, AllWork.I_BASE_OLD_CH + dirContents);
 			}
 			if (Files.exists(path, LinkOption.NOFOLLOW_LINKS) && Files.isReadable(path)) {
 				SimplyCopy.simplyCopy(path.toString(), AllWork.TEMP_DIR + "pod_"

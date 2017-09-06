@@ -33,7 +33,8 @@ public class CreateZipArchive{
 		
 		try{    
 			for(int i = 0; i < sDirList.length; i++){
-			    if(new File(f + File.separator + sDirList[i]).isFile()){
+			    if(new File(f + File.separator + sDirList[i]).isFile() 
+			    		&& (sDirList[i].substring(sDirList[i].length()-2).toLowerCase().equals("db") || sDirList[i].substring(sDirList[i].length()-2).toLowerCase().equals("px"))){
 			    	RepaintProgressBar.repaintProgressBar(1);
 			    	AllWork.getTextArea().append("Упаковка  " + sDirList[i] + "  в  " + destFile + ".zip...  ");
 			    	addFileToZip(zos, f + File.separator, sDirList[i]);

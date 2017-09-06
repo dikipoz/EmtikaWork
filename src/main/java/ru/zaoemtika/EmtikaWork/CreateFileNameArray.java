@@ -7,11 +7,9 @@ public class CreateFileNameArray {
 		String[] sDirList = f.list();
 		if(!f.exists()){
 			AllWork.getTextArea().append("ошибка \n");
-			  //System.exit(0);
 		}
 		if(!f.isDirectory()){
 			AllWork.getTextArea().append("ошибка \n");
-			//System.exit(0);
 		}
 		return sDirList;
 	}
