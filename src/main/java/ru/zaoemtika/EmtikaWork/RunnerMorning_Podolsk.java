@@ -1,5 +1,6 @@
 package ru.zaoemtika.EmtikaWork;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
@@ -61,7 +62,17 @@ public class RunnerMorning_Podolsk implements Runnable {
 							new Delete(AllWork.TEMP_DIR, zipfilename);
 							break;
 						case "db":
-							SimplyCopy.simplyCopy(path.toString(), AllWork.TEMP_DIR + zipfilename);
+							try {
+								if (!Files.getAttribute(path, "lastModifiedTime", LinkOption.NOFOLLOW_LINKS).equals(Files.getAttribute(Paths.get(AllWork.I_BASE_PRICE + zipfilename), "lastModifiedTime", LinkOption.NOFOLLOW_LINKS))){
+									SimplyCopy.simplyCopy(path.toString(), AllWork.TEMP_DIR + zipfilename);
+								} else {
+									AllWork.getTextArea().append(" " + zipfilename.toString() + "  пропущен \n");
+								}
+							} catch (IOException e) {
+								SimplyCopy.simplyCopy(path.toString(), AllWork.TEMP_DIR + zipfilename);
+								e.printStackTrace();
+							}
+							
 							break;
 						}
 					} else
