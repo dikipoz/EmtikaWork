@@ -1,5 +1,7 @@
 package ru.zaoemtika.EmtikaWork;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,11 +13,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 public class CheckUpdate {
 
 	public CheckUpdate(File semaphore) throws IOException {
-
+		UIManager.put("OptionPane.background", new Color(51, 51, 51));
+		UIManager.put("Panel.background", new Color(51, 51, 51));
+		// UIManager.put("Panel.background", new Color(126,21,20));
+		UIManager.put("OptionPane.messageFont", new Font("Calibri", Font.PLAIN, 14));
+		UIManager.put("OptionPane.messageForeground", Color.WHITE);
 		if (!semaphore.exists())
 			semaphore.createNewFile();
 		semaphore.deleteOnExit();

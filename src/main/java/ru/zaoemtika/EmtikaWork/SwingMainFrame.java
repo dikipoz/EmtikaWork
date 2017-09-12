@@ -110,11 +110,7 @@ public class SwingMainFrame extends JFrame {
 	}
 
 	public SwingMainFrame() {
-		UIManager.put("OptionPane.background", new Color(51, 51, 51));
-		UIManager.put("Panel.background", new Color(51, 51, 51));
-		// UIManager.put("Panel.background", new Color(126,21,20));
-		UIManager.put("OptionPane.messageFont", new Font("Calibri", Font.PLAIN, 14));
-		UIManager.put("OptionPane.messageForeground", Color.WHITE);
+		
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			public void run() {
 				new Delete(AllWork.TEMP_DIR);
