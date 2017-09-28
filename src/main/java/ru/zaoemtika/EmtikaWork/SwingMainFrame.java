@@ -54,6 +54,8 @@ import javax.swing.border.LineBorder;
 
 public class SwingMainFrame extends JFrame {
 
+	
+	
 	private static final int MORNING_OR_EVENING = 13;
 	private static final long serialVersionUID = 1L;
 	private static String[] needFiles;
@@ -107,6 +109,14 @@ public class SwingMainFrame extends JFrame {
 
 	public static void setClick(boolean click) {
 		SwingMainFrame.click = click;
+	}
+	
+	static{
+		try {
+			needFiles = FilialFromSQL.filialFromSQL(System.getProperties().getProperty("user.name"));
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Пользователь не найден");
+		}
 	}
 
 	public SwingMainFrame() {
@@ -171,11 +181,7 @@ public class SwingMainFrame extends JFrame {
 
 		contentPane.addMouseListener(adapter);
 		contentPane.addMouseMotionListener(adapter);
-		try {
-			needFiles = FilialFromSQL.filialFromSQL(System.getProperties().getProperty("user.name"));
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Пользователь не найден");
-		}
+		
 
 		
 		

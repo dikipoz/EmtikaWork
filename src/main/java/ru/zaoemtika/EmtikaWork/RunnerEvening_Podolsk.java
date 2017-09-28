@@ -46,7 +46,7 @@ public class RunnerEvening_Podolsk implements Runnable {
 	public void run() {
 		AllWork.setErrorsCount(0);
 		AllWork.getTextArea().setText(null);
-		AllWork.getProgressBar().setMaximum(400);
+		AllWork.getProgressBar().setMaximum(700);
 		AllWork.getProgressBar().setValue(0);
 
 		Path dir = Paths.get(AllWork.C_CASE);
@@ -100,16 +100,20 @@ public class RunnerEvening_Podolsk implements Runnable {
 		if (sDirList.length > 0) {
 			AllWork.getProgressBar().setMaximum(AllWork.getProgressBar().getMaximum() + sDirList.length);
 			for (String dirContents : sDirList) {
-				//System.out.println(dirContents.substring(dirContents.length()-2, dirContents.length()));
-				if (dirContents.substring(dirContents.length()-2, dirContents.length()).toLowerCase().equals("db"))
+				System.out.println(AllWork.I_BASE_DOC + dirContents);
+				if (!(Files.isDirectory(Paths.get(AllWork.I_BASE_DOC + dirContents), LinkOption.NOFOLLOW_LINKS)) 
+						&& (dirContents.substring(dirContents.length()-2, dirContents.length()).toLowerCase().equals("db")))
 					SimplyCopy.simplyCopy(AllWork.I_BASE_DOC + dirContents, AllWork.I_BASE_OLD_CH + dirContents);
+					
 			}
 			if (Files.exists(path, LinkOption.NOFOLLOW_LINKS) && Files.isReadable(path)) {
 				SimplyCopy.simplyCopy(path.toString(), AllWork.TEMP_DIR + "pod_"
 						+ new StringBuilder(CurrentDate.currentDate(true)).delete(0, 2) + ".zip");
+				
 				// Разархивируем из z:\counts файл свертки на TEMP_DIR
 				ExtractZipArchive.extractZipArchive(AllWork.TEMP_DIR, AllWork.TEMP_DIR,
 						"pod_" + new StringBuilder(CurrentDate.currentDate(true)).delete(0, 2) + ".zip");
+				
 				// Копируем недостающее из i:\base\doc в TEMP_DIR
 				for (String sdirlist : sDirList) {
 					SimplyCopy.simplyCopy(AllWork.I_BASE_DOC + sdirlist, AllWork.TEMP_DIR + sdirlist);
