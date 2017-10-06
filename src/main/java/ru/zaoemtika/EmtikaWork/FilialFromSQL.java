@@ -66,6 +66,7 @@ public class FilialFromSQL {
 						needFiles[8] = rs.getString("N предпр");
 					} else
 						needFiles[8] = "";
+					
 					return needFiles;
 				}
 			}

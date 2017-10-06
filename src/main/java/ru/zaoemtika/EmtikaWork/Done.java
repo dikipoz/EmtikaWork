@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -30,7 +29,7 @@ public class Done {
 			new Delete(AllWork.I_BASE_PRICE, suffix);
 		}
 		File file = new File(File.separator + File.separator + "zaoemtika.ru" + File.separator + "dfs" + File.separator
-				+ "ftp" + File.separator + "__Soft" + File.separator + "EWLog" + File.separator + "errorlog.txt");
+				+ "ftp" + File.separator + "__Soft" + File.separator + "EWLog" + File.separator + SwingMainFrame.getNeedFiles()[6] + "_log.txt");
 		Calendar c = Calendar.getInstance();
 		StringBuilder date = new StringBuilder();
 		date.append(
@@ -69,25 +68,26 @@ public class Done {
 					"Статус завершения", JOptionPane.ERROR_MESSAGE,
 					new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Error-48.png")));
 		}
-		try (FileWriter fw = new FileWriter(file, true)) {
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.newLine();
+		try (BufferedWriter pst = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "UTF8"))) {
+			
+			//BufferedWriter bw = new BufferedWriter(fw);
+			pst.newLine();
 			if (errorCounts == 0) {
-				bw.write(date + ", " + whatWork + " [" + filial + " :: "
+				pst.write(date + ", " + whatWork + " [" + filial + " :: "
 						+ InetAddress.getLocalHost().getHostName().toLowerCase() + " :: "
 						+ System.getProperties().getProperty("user.name") + " :: "
 						+ new SwingMainFrame().getMT().toString().substring(11, 25) + "] ОК");
 			} else {
 				for (String st : AllWork.getErrList()) {
 					if (!st.contains("Процесс не может"))
-						bw.write(date + ", " + whatWork + " [" + filial + " :: "
+						pst.write(date + ", " + whatWork + " [" + filial + " :: "
 								+ InetAddress.getLocalHost().getHostName().toLowerCase() + " :: "
 								+ System.getProperties().getProperty("user.name") + "::"
 								+ new SwingMainFrame().getMT().toString().substring(11, 25) + "]	" + st
 								+ " ERROR\n");
 				}
 			}
-			bw.close();
+			//bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

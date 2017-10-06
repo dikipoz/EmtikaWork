@@ -61,6 +61,10 @@ public class SwingMainFrame extends JFrame {
 	private static String[] needFiles;
 	private JPanel contentPane;
 	private Color backgroundColor;
+	public static String[] getNeedFiles() {
+		return needFiles;
+	}
+
 	private Color foregroundColor;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
