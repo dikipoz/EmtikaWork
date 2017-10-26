@@ -48,8 +48,10 @@ public class ExtractZipArchive {
 			}
 			zip.close();
 			AllWork.getTextArea().append("готово \n");
+			AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 		} catch (IOException ex) {
 			AllWork.getTextArea().append("ошибка \n");
+			AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 			AllWork.setErrList(filename.toString() + " распаковка ");
 			AllWork.setErrorsCount(AllWork.getErrorsCount() + 1);
 			ex.printStackTrace();

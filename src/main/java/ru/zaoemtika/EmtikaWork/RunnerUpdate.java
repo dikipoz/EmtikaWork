@@ -83,6 +83,7 @@ public class RunnerUpdate implements Runnable {
 					} else {
 						if (s.getKey().toLowerCase().contains("update") && s.getValue()) {
 							AllWork.getTextArea().append(s.getKey().toLowerCase() + "  не  изменялся...  пропущен\n");
+							AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 							RepaintProgressBar.repaintProgressBar(100);
 						}
 					}
@@ -107,6 +108,7 @@ public class RunnerUpdate implements Runnable {
 						if (s.getKey().toLowerCase().contains("nacen") && s.getValue()) {
 							AllWork.getTextArea().append(s.getKey().toLowerCase()
 									+ "  не  изменялся...  пропущен\n");
+							AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 							RepaintProgressBar.repaintProgressBar(100);
 						}
 					}
@@ -146,6 +148,7 @@ public class RunnerUpdate implements Runnable {
 							if (s.getKey().toLowerCase().contains("bs" + CurrentDate.currentDate(true)) && s.getValue()) {
 								AllWork.getTextArea().append(s.getKey().toLowerCase()
 										+ "  не  изменялся...  пропущен\n");
+								AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 								RepaintProgressBar.repaintProgressBar(100);
 							}
 						}

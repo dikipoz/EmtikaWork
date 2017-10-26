@@ -45,6 +45,7 @@ public class Done {
 		date.append(":");
 		date.append(c.get(Calendar.SECOND) > 9 ? c.get(Calendar.SECOND) : "0" + c.get(Calendar.SECOND));
 		AllWork.getTextArea().append("\nЗавершено. Всего ошибок: " + errorCounts + "\n");
+		AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 		if (errorCounts == 0 ) {
 			if ((whatWork.contains("Утренняя") || whatWork.contains("Обновление")) && !filial.contains("Подольск")) {
 				try (PrintWriter writer = new PrintWriter(
@@ -56,6 +57,7 @@ public class Done {
 						writer.println(entry.getKey() + " " + entry.getValue());
 					}
 					AllWork.getTextArea().append(" Сохранение изменений в ewupd.txt...  готово\n");
+					AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

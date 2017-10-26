@@ -144,7 +144,6 @@ public abstract class AllWork {
 	}
 
 	public static void setTextArea(JTextArea textArea) {
-
 		AllWork.textArea = textArea;
 	}
 

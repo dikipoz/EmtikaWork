@@ -212,7 +212,7 @@ public class SwingMainFrame extends JFrame {
 		helpButton.setContentAreaFilled(false);
 		helpButton.setBorderPainted(false);
 		helpButton.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/help_mov.png")));
-		helpButton.setBounds(1, 2, 26, 23);
+		helpButton.setBounds(0, 1, 26, 23);
 		helpButton.addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {
 				helpButton
@@ -248,53 +248,18 @@ public class SwingMainFrame extends JFrame {
 		});
 		contentPane.add(helpButton);
 
-		JButton exitTop = new JButton();
-		exitTop.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		exitTop.setFocusable(false);
-		exitTop.setFocusTraversalKeysEnabled(false);
-		exitTop.setFocusPainted(false);
-		exitTop.setBorder(null);
-		exitTop.setBorderPainted(false);
-		exitTop.setContentAreaFilled(false);
-		exitTop.setOpaque(false);
-		exitTop.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/exit1.png")));
-		exitTop.setBounds(334, 0, 26, 23);
-		exitTop.addMouseListener(new MouseListener() {
-			public void mouseReleased(MouseEvent e) {
-				exitTop.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/exit1.png")));
-			}
-
-			public void mousePressed(MouseEvent e) {
-			}
-
-			public void mouseExited(MouseEvent e) {
-				exitTop.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/exit1.png")));
-			}
-
-			public void mouseEntered(MouseEvent e) {
-				exitTop.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/exit1_mov.png")));
-			}
-
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		exitTop.addActionListener(e -> {
-			new Delete(AllWork.TEMP_DIR);
-			System.exit(0);
-		});
-
 		JButton minimizedFrame = new JButton("");
-		minimizedFrame.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Minimize20.png")));
+		minimizedFrame.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Minimized.png")));
 		minimizedFrame.setFocusPainted(false);
 		minimizedFrame.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		minimizedFrame.setContentAreaFilled(false);
 		minimizedFrame.setBorderPainted(false);
 		minimizedFrame.setOpaque(false);
-		minimizedFrame.setBounds(314, 2, 19, 23);
+		minimizedFrame.setBounds(324, 1, 17, 17);
 		minimizedFrame.addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {
 				minimizedFrame.setIcon(
-						new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Minimize20.png")));
+						new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Minimized.png")));
 			}
 
 			public void mousePressed(MouseEvent e) {
@@ -303,12 +268,12 @@ public class SwingMainFrame extends JFrame {
 
 			public void mouseExited(MouseEvent e) {
 				minimizedFrame.setIcon(
-						new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Minimize20.png")));
+						new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Minimized.png")));
 			}
 
 			public void mouseEntered(MouseEvent e) {
 				minimizedFrame.setIcon(
-						new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Minimize20_mov.png")));
+						new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/Minimized_move.png")));
 			}
 
 			public void mouseClicked(MouseEvent e) {
@@ -316,8 +281,6 @@ public class SwingMainFrame extends JFrame {
 		});
 
 		contentPane.add(minimizedFrame);
-
-		contentPane.add(exitTop);
 
 		JLabel helloLabel = new JLabel();
 		helloLabel.setFont(new Font("Calibri", Font.PLAIN, 11));
@@ -340,6 +303,43 @@ public class SwingMainFrame extends JFrame {
 			helloLabel.setText(
 					"\u0427\u0435\u0433\u043e \u043d\u0435 \u0441\u043f\u0438\u0442\u0435,  " + needFiles[7] + " ?");
 		}
+		
+				JButton exitTop = new JButton();
+				exitTop.setForeground(Color.WHITE);
+				exitTop.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				exitTop.setFocusable(false);
+				exitTop.setFocusTraversalKeysEnabled(false);
+				exitTop.setFocusPainted(false);
+				exitTop.setBorder(null);
+				exitTop.setBorderPainted(false);
+				exitTop.setContentAreaFilled(false);
+				exitTop.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/exit_new_17.png")));
+				exitTop.setBounds(342, 1, 17, 17);
+				exitTop.addMouseListener(new MouseListener() {
+					public void mouseReleased(MouseEvent e) {
+						exitTop.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/exit_new_17.png")));
+					}
+
+					public void mousePressed(MouseEvent e) {
+					}
+
+					public void mouseExited(MouseEvent e) {
+						exitTop.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/exit_new_17.png")));
+					}
+
+					public void mouseEntered(MouseEvent e) {
+						exitTop.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/exit_new_move.png")));
+					}
+
+					public void mouseClicked(MouseEvent e) {
+					}
+				});
+				exitTop.addActionListener(e -> {
+					new Delete(AllWork.TEMP_DIR);
+					System.exit(0);
+				});
+				
+						contentPane.add(exitTop);
 		contentPane.add(helloLabel);
 
 		JLabel filialLabel = new JLabel("");
@@ -370,6 +370,7 @@ public class SwingMainFrame extends JFrame {
 		contentPane.add(backgroundLabel);
 
 		JTextArea textArea = new JTextArea();
+		textArea.setAutoscrolls(false);
 		textArea.setRequestFocusEnabled(false);
 		textArea.setLocale(new Locale("ru", "RU"));
 		textArea.setWrapStyleWord(true);
@@ -385,8 +386,6 @@ public class SwingMainFrame extends JFrame {
 		scrollPane.setLocale(new Locale("ru", "RU"));
 		scrollPane.setBounds(10, 385, 340, 181);
 		contentPane.add(scrollPane);
-
-		System.out.println(isAM_PM());
 
 		rMorning = new JRadioButton("", isAM_PM());
 		rMorning.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -741,7 +740,6 @@ public class SwingMainFrame extends JFrame {
 			setClick(true);
 			if (isAM_PM() && !rUpd && RunnerEvening.getInstance() == null && RunnerEvening_Podolsk.getInstance() == null
 					&& RunnerUpdate.getInstance() == null) {
-				System.out.println("Утро");
 				if (!needFiles[8].equals("6101")) {
 					new Thread(RunnerMorning.runnerMorning(needFiles, progressBar, textArea)).start();
 				} else {
@@ -749,7 +747,6 @@ public class SwingMainFrame extends JFrame {
 				}
 			} else if (!isAM_PM() && !rUpd && RunnerMorning.getInstance() == null
 					&& RunnerMorning_Podolsk.getInstance() == null && RunnerUpdate.getInstance() == null) {
-				System.out.println("Вечер");
 				if (!needFiles[8].equals("6101")) {
 					new Thread(RunnerEvening.runnerEvening(needFiles, progressBar, textArea, isDoDeficit(), isDoSklad(),
 							isDoClearDoc())).start();

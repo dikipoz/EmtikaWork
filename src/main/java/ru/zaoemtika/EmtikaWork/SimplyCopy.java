@@ -10,6 +10,7 @@ import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 
 public abstract class SimplyCopy {
+	
 	public static void simplyCopy(String pathS, String pathD) {
 
 		Path pathSource = Paths.get(pathS);
@@ -19,6 +20,7 @@ public abstract class SimplyCopy {
 			Files.walkFileTree(pathSource, new MyFileCopy(pathSource, pathDestination));
 		} catch (IOException e) {
 			AllWork.getTextArea().append(" Не найден файл " + e.getMessage() + "   ошибка!!!!\n");
+			AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 			AllWork.setErrList(e.getMessage() + "  ошибка");
 			AllWork.setErrorsCount(AllWork.getErrorsCount() + 1);
 			// e.printStackTrace();
@@ -41,22 +43,29 @@ class MyFileCopy extends SimpleFileVisitor<Path> {
 
 		if (destination.toString().toLowerCase().contains(AllWork.TEMP_DIR.toLowerCase())
 				|| destination.toString().toLowerCase().contains("roaming")) {
-			AllWork.getTextArea()
-					.append(" Копирование  " + path.getFileName().toString().toLowerCase() + "  с  сервера  FTP...   ");
+			AllWork.getTextArea().append(" Копируем  " + path.getFileName().toString().toLowerCase() + "  с  сервера  FTP...   ");
 		} else {
-			AllWork.getTextArea().append(" Копирование  " + path.getFileName().toString().toLowerCase() + "  в  "
-					+ destination.toString().toLowerCase() + " ...   ");
+			if (destination.toString().contains(".")){
+			AllWork.getTextArea().append(" Копируем  " + path.getFileName().toString().toLowerCase() + "  в  "
+					+ destination.getParent().toString().toLowerCase() + " ...   ");
+			} else {
+				AllWork.getTextArea().append(" Копируем  " + path.getFileName().toString().toLowerCase() + "  в  "
+						+ destination.toString().toLowerCase() + " ...   ");
+			}
 		}
 		try {
 			Files.copy(path, newd, StandardCopyOption.REPLACE_EXISTING);
 			AllWork.getTextArea().append("готово \n");
+			AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 		} catch (IOException e) {
 			try {
 				AllWork.getTextArea().append("... попытка повторного копирования ...\n");
 				Files.copy(path, newd, StandardCopyOption.REPLACE_EXISTING);
 				AllWork.getTextArea().append("готово \n");
+				AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 			} catch (IOException ex) {
 				AllWork.getTextArea().append("ошибка \n");
+				AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 				AllWork.setErrList(ex.getMessage() + " повторное копирование ");
 				AllWork.setErrorsCount(AllWork.getErrorsCount() + 1);
 				e.printStackTrace();
