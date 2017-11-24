@@ -51,6 +51,7 @@ import java.awt.ComponentOrientation;
 import javax.swing.border.TitledBorder;
 import javax.swing.JSeparator;
 import javax.swing.border.LineBorder;
+import java.awt.Insets;
 
 public class SwingMainFrame extends JFrame {
 
@@ -314,7 +315,7 @@ public class SwingMainFrame extends JFrame {
 				exitTop.setBorderPainted(false);
 				exitTop.setContentAreaFilled(false);
 				exitTop.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/exit_new_17.png")));
-				exitTop.setBounds(342, 1, 17, 17);
+				exitTop.setBounds(342, 1, 18, 17);
 				exitTop.addMouseListener(new MouseListener() {
 					public void mouseReleased(MouseEvent e) {
 						exitTop.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/exit_new_17.png")));
@@ -370,6 +371,7 @@ public class SwingMainFrame extends JFrame {
 		contentPane.add(backgroundLabel);
 
 		JTextArea textArea = new JTextArea();
+		textArea.setMargin(new Insets(3, 3, 3, 3));
 		textArea.setAutoscrolls(false);
 		textArea.setRequestFocusEnabled(false);
 		textArea.setLocale(new Locale("ru", "RU"));
@@ -525,6 +527,7 @@ public class SwingMainFrame extends JFrame {
 		contentPane.add(rUpdate);
 
 		progressBar = new JProgressBar();
+		progressBar.setBounds(new Rectangle(0, 1, 0, 0));
 		progressBar.setStringPainted(true);
 		progressBar.setFocusTraversalKeysEnabled(false);
 		progressBar.setFocusable(false);
@@ -532,9 +535,10 @@ public class SwingMainFrame extends JFrame {
 		progressBar.setBorderPainted(false);
 		progressBar.setBorder(null);
 		progressBar.setFont(new Font("Calibri", Font.PLAIN, 11));
-		progressBar.setForeground(new Color(0, 151, 251));
-		progressBar.setBackground(getBackGroundColor());
-		progressBar.setBounds(10, 371, 340, 9);
+		progressBar.setForeground(new Color(205,0,0));
+		progressBar.setBackground(Color.WHITE);
+		//progressBar.setBackground(getBackGroundColor());
+		progressBar.setBounds(10, 371, 340, 10);
 		contentPane.add(progressBar);
 
 		chckbxDeficit = new JCheckBox("\u0414\u0435\u0444\u0438\u0446\u0438\u0442  ("
@@ -773,11 +777,10 @@ public class SwingMainFrame extends JFrame {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		sb.append("( \u043e\u0442 ").append(fileAttr.substring(8, 10)).append("-").append(fileAttr.substring(5, 7))
-				.append("-").append(fileAttr.substring(0, 4)).append(" )");
-		chckbxInvoice = new JCheckBox(
-				"\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435 \u0441\u0447\u0435\u0442\u043E\u0432     "
-						+ sb);
+		sb.append("  ( \u043e\u0442 ").append(fileAttr.substring(8, 10)).append("-").append(fileAttr.substring(5, 7))
+				.append("-").append(fileAttr.substring(0, 4)).append("  ").append(Integer.parseInt(fileAttr.substring(11, 13)) + 3)
+				.append(":").append(fileAttr.substring(14, 16)).append(" )");
+		chckbxInvoice = new JCheckBox(" \u0421\u0447\u0435\u0442\u0430     " + sb);
 		chckbxInvoice.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		chckbxInvoice.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/check_enable.png")));
 		chckbxInvoice.setForeground(color);
@@ -809,11 +812,10 @@ public class SwingMainFrame extends JFrame {
 			e1.printStackTrace();
 		}
 		sb.append("( \u043e\u0442 ").append(fileAttr.substring(8, 10)).append("-").append(fileAttr.substring(5, 7))
-				.append("-").append(fileAttr.substring(0, 4)).append(" )");
+				.append("-").append(fileAttr.substring(0, 4)).append("  ").append(Integer.parseInt(fileAttr.substring(11, 13)) + 3)
+				.append(":").append(fileAttr.substring(14, 16)).append(" )");
 		// sb.append(" ").append(fileAttr.substring(11, 19)).append(")");
-		chckbxNacenka = new JCheckBox(
-				"\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435 \u043D\u0430\u0446\u0435\u043D\u043A\u0438  "
-						+ sb);
+		chckbxNacenka = new JCheckBox(" \u041D\u0430\u0446\u0435\u043D\u043A\u0430  " + sb);
 		chckbxNacenka.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		chckbxNacenka.setIcon(new ImageIcon(SwingMainFrame.class.getResource("/ru/zaoemtika/images/check_enable.png")));
 		chckbxNacenka.setForeground(color);
@@ -836,7 +838,7 @@ public class SwingMainFrame extends JFrame {
 		}
 		contentPane.add(chckbxNacenka);
 
-		chckbxBS = new JCheckBox("\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435 BS"
+		chckbxBS = new JCheckBox(" BS"
 				+ CurrentDate.currentDate(true) + ".ZIP");
 		chckbxBS.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		chckbxBS.setForeground(color);

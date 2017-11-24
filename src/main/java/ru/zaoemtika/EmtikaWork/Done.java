@@ -29,7 +29,7 @@ public class Done {
 			new Delete(AllWork.I_BASE_PRICE, suffix);
 		}
 		File file = new File(File.separator + File.separator + "zaoemtika.ru" + File.separator + "dfs" + File.separator
-				+ "ftp" + File.separator + "__Soft" + File.separator + "EWLog" + File.separator + SwingMainFrame.getNeedFiles()[6] + "_log.txt");
+				+ "ftp" + File.separator + "__Soft" + File.separator + "EWLog" + File.separator + "EWLogError.txt");
 		Calendar c = Calendar.getInstance();
 		StringBuilder date = new StringBuilder();
 		date.append(
@@ -44,7 +44,7 @@ public class Done {
 		date.append(c.get(Calendar.MINUTE) > 9 ? c.get(Calendar.MINUTE) : "0" + c.get(Calendar.MINUTE));
 		date.append(":");
 		date.append(c.get(Calendar.SECOND) > 9 ? c.get(Calendar.SECOND) : "0" + c.get(Calendar.SECOND));
-		AllWork.getTextArea().append("\nЗавершено. Всего ошибок: " + errorCounts + "\n");
+		AllWork.getTextArea().append("\n Завершено. Всего ошибок: " + errorCounts + "\n");
 		AllWork.getTextArea().setCaretPosition(AllWork.getTextArea().getText().length());
 		if (errorCounts == 0 ) {
 			if ((whatWork.contains("Утренняя") || whatWork.contains("Обновление")) && !filial.contains("Подольск")) {
@@ -97,7 +97,7 @@ public class Done {
 			paradise();
 	}
 
-	private void paradise() {
+	void paradise() {
 		String pr_name = "Paradise".toUpperCase(); // <-- искомый процесс
 		String process_line;
 		int flag = 0;

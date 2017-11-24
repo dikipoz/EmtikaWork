@@ -23,6 +23,7 @@ public class CheckUpdate {
 		// UIManager.put("Panel.background", new Color(126,21,20));
 		UIManager.put("OptionPane.messageFont", new Font("Calibri", Font.PLAIN, 14));
 		UIManager.put("OptionPane.messageForeground", Color.WHITE);
+		
 		if (!semaphore.exists())
 			semaphore.createNewFile();
 		semaphore.deleteOnExit();
