@@ -45,6 +45,8 @@ public class RunnerMorning_Podolsk implements Runnable {
 
 		// Копирование из z_defs в c:\_111, распаковка и копирование в
 		// i:\base\price
+		
+
 		{
 			String[] strSuff = { "zip", "db" };
 			for (String str : strSuff) {
@@ -63,7 +65,9 @@ public class RunnerMorning_Podolsk implements Runnable {
 							break;
 						case "db":
 							try {
-								if (!Files.getAttribute(path, "lastModifiedTime", LinkOption.NOFOLLOW_LINKS).equals(Files.getAttribute(Paths.get(AllWork.I_BASE_PRICE + zipfilename), "lastModifiedTime", LinkOption.NOFOLLOW_LINKS))){
+								if (!Files.getAttribute(path, "lastModifiedTime", LinkOption.NOFOLLOW_LINKS)
+										.equals(Files.getAttribute(Paths.get(AllWork.I_BASE_PRICE + zipfilename),
+												"lastModifiedTime", LinkOption.NOFOLLOW_LINKS))) {
 									SimplyCopy.simplyCopy(path.toString(), AllWork.TEMP_DIR + zipfilename);
 								} else {
 									AllWork.getTextArea().append(" " + zipfilename.toString() + "  пропущен \n");
@@ -72,7 +76,7 @@ public class RunnerMorning_Podolsk implements Runnable {
 								SimplyCopy.simplyCopy(path.toString(), AllWork.TEMP_DIR + zipfilename);
 								e.printStackTrace();
 							}
-							
+
 							break;
 						}
 					} else
@@ -81,7 +85,7 @@ public class RunnerMorning_Podolsk implements Runnable {
 			}
 		}
 
-		//System.exit(0);
+		// System.exit(0);
 		// Копирование из z:\sklads с последующей распаковкой в i:\base\price
 		AllWork.getListAllSuffix().clear();
 		GetAllSuffixFile.getAllSuffixFile(AllWork.Z_SKLADS, "zip");
@@ -97,8 +101,11 @@ public class RunnerMorning_Podolsk implements Runnable {
 		}
 		SimplyCopy.simplyCopy(AllWork.TEMP_DIR, AllWork.I_BASE_PRICE);
 		AllWork.getProgressBar().setValue(AllWork.getProgressBar().getMaximum());
-		new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0], "\u0414\u0430\u043D\u043D\u044B\u0435 \u043E\u0442 \u0444\u0438\u043B\u0438\u0430\u043B\u043E\u0432   ");
+		new Done(true, AllWork.getErrorsCount(), AllWork.getFilial()[0],
+				"\u0414\u0430\u043D\u043D\u044B\u0435 \u043E\u0442 \u0444\u0438\u043B\u0438\u0430\u043B\u043E\u0432   ");
 
 		instance = null;
 	}
+
+	
 }

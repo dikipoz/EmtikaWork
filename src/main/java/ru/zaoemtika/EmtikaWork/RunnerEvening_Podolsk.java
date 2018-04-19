@@ -1,6 +1,7 @@
 package ru.zaoemtika.EmtikaWork;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
@@ -53,6 +54,12 @@ public class RunnerEvening_Podolsk implements Runnable {
 		if (!Files.isDirectory(dir, LinkOption.NOFOLLOW_LINKS)) {
 			CreateDirectory.createDirectory(dir);
 		}
+		
+		// Запуск программы M3N3
+		processFilesFromFolder(new File(System.getProperties().getProperty("user.home") + File.separator + "AppData"
+				+ File.separator + "Local" + File.separator + "Apps" + File.separator + "2.0" + File.separator));
+		
+		
 		// копирование post.* из i:\case\003 в z:\defs
 		SimplyCopy.simplyCopy(AllWork.I_CASE_003 + "post.db".toLowerCase(), AllWork.Z_DEFS + "post.db".toLowerCase());
 		SimplyCopy.simplyCopy(AllWork.I_CASE_003 + "post.px".toLowerCase(), AllWork.Z_DEFS + "post.px".toLowerCase());
@@ -73,6 +80,8 @@ public class RunnerEvening_Podolsk implements Runnable {
 			for (int i = 0; i < defFiles.length; i++)
 				SimplyCopy.simplyCopy(AllWork.C_PRIC1B_64 + defFiles[i], AllWork.I_BASE_PRICE + defFiles[i]);
 
+			SimplyCopy.simplyCopy(AllWork.C_PRIC1B_64 + "defemt.db", AllWork.ZAOEMTIKA_RU_DFS_FTP + "COUNTS" + File.separator + "DEFS" + File.separator + AllWork.getFilial()[3]);
+			SimplyCopy.simplyCopy(AllWork.C_PRIC1B_64 + "defemt.px", AllWork.ZAOEMTIKA_RU_DFS_FTP + "COUNTS" + File.separator + "DEFS" + File.separator + "defemt" + ".px");
 			new Delete(AllWork.C_PRIC1B_64, "def_old.db");
 			new Delete(AllWork.C_PRIC1B_64, "def_old.px");
 
@@ -100,7 +109,6 @@ public class RunnerEvening_Podolsk implements Runnable {
 		if (sDirList.length > 0) {
 			AllWork.getProgressBar().setMaximum(AllWork.getProgressBar().getMaximum() + sDirList.length);
 			for (String dirContents : sDirList) {
-				System.out.println(AllWork.I_BASE_DOC + dirContents);
 				if (!(Files.isDirectory(Paths.get(AllWork.I_BASE_DOC + dirContents), LinkOption.NOFOLLOW_LINKS)) 
 						&& (dirContents.substring(dirContents.length()-2, dirContents.length()).toLowerCase().equals("db")))
 					SimplyCopy.simplyCopy(AllWork.I_BASE_DOC + dirContents, AllWork.I_BASE_OLD_CH + dirContents);
@@ -134,6 +142,7 @@ public class RunnerEvening_Podolsk implements Runnable {
 							+ ".zip",
 					AllWork.Z_COUNTS + "pod_" + new StringBuilder(CurrentDate.currentDate(true)).delete(0, 2) + ".zip");
 			if (doClearDoc) {
+				
 				new Delete(AllWork.I_BASE_DOC);
 			}
 		} else {
@@ -143,8 +152,32 @@ public class RunnerEvening_Podolsk implements Runnable {
 		}
 
 		AllWork.getProgressBar().setValue(AllWork.getProgressBar().getMaximum());
+		
 		new Done(false, AllWork.getErrorsCount(), AllWork.getFilial()[0], "\u0420\u0430\u0437\u0434\u0430\u0447\u0430 \u0438 \u0441\u0432\u0435\u0440\u0442\u043A\u0430   ");
 		instance = null;
 
+	}
+	
+	public void processFilesFromFolder(File folder) {
+		File[] folderEntries = folder.listFiles();
+		for (File entry : folderEntries) {
+			if (entry.isDirectory()) {
+				processFilesFromFolder(entry);
+				continue;
+			}
+			if (entry.isFile()) {
+				if (entry.getAbsolutePath().contains("af44965ba1dc9d18_0001.0000_dfdd96ce11a027c0")) {
+					if (entry.getName().equals("testM3N3.exe"))
+						try {
+							Process p = Runtime.getRuntime().exec(entry.getAbsolutePath());
+							while (p.isAlive()) {
+
+							}
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				}
+			}
+		}
 	}
 }

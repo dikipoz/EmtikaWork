@@ -41,8 +41,12 @@ public class FilialFromSQL {
 						needFiles[2] = rs.getString("Дефицит").toLowerCase();
 					} else
 						needFiles[2] = "";
-					if (rs.getString("Счета по дефициту") != null && !rs.getString("Счета по дефициту").isEmpty()) {
-						needFiles[3] = rs.getString("Счета по дефициту").toLowerCase();
+					if (rs.getString("Дефицит") != null && !rs.getString("Дефицит").isEmpty()) {
+						String[] str = rs.getString("Дефицит").toLowerCase().split("_");
+						needFiles[3] = "";
+						for(int i = 0; i < str.length; i++){
+							needFiles[3] += str[i];
+						}
 					} else
 						needFiles[3] = "";
 					if (rs.getString("SUR") != null && !rs.getString("SUR").isEmpty()) {

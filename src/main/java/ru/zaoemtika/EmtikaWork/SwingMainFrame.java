@@ -118,6 +118,7 @@ public class SwingMainFrame extends JFrame {
 	
 	static{
 		try {
+			System.out.println(System.getProperties().getProperty("user.home"));
 			needFiles = FilialFromSQL.filialFromSQL(System.getProperties().getProperty("user.name"));
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Пользователь не найден");

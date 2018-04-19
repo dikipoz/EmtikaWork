@@ -61,13 +61,14 @@ public class RunnerEvening implements Runnable {
 				// Удаление всего из I_CASE_MODEM_DEF и копирование defxx.db
 				new Delete(AllWork.I_CASE_MODEM_DEF);
 				SimplyCopy.simplyCopy(AllWork.C_PRIC1B_64 + "defemt.db", AllWork.I_CASE_MODEM_DEF + AllWork.getFilial()[3]);
-
+				SimplyCopy.simplyCopy(AllWork.C_PRIC1B_64 + "defemt.db", AllWork.ZAOEMTIKA_RU_DFS_FTP + "COUNTS" + File.separator + "DEFS" + File.separator + AllWork.getFilial()[3]);
 				// для индексного файла находим правильное имя
 				StringBuilder str = new StringBuilder(AllWork.getFilial()[3]);
 				str.replace(0, str.length(), str.delete(str.indexOf("."), str.length()).toString());
 
 				// копирование defxx.px
 				SimplyCopy.simplyCopy(AllWork.C_PRIC1B_64 + "defemt.px", AllWork.I_CASE_MODEM_DEF + str + ".px");
+				SimplyCopy.simplyCopy(AllWork.C_PRIC1B_64 + "defemt.px", AllWork.ZAOEMTIKA_RU_DFS_FTP + "COUNTS" + File.separator + "DEFS" + File.separator + str + ".px");
 
 				File destPath = new File(AllWork.I_CASE_MODEM_DEF);
 				String[] sDirList = CreateFileNameArray.createFileNameArray(destPath);
